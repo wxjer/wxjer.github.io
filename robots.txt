@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: http://wxjer.github.io/sitemap.xml
