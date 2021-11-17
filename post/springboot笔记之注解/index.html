@@ -1,0 +1,402 @@
+<!doctype html><html lang=zh-cn>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<title>简明SpringBoot小注解 - SIRIUS</title>
+<meta name=renderer content="webkit">
+<meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta http-equiv=cache-control content="no-transform">
+<meta http-equiv=cache-control content="no-siteapp">
+<meta name=theme-color content="#f8f5ec">
+<meta name=msapplication-navbutton-color content="#f8f5ec">
+<meta name=apple-mobile-web-app-capable content="yes">
+<meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec">
+<meta name=author content="Dabu6aiksg"><meta name=description content="学点Springboot"><meta name=keywords content="SpringBoot">
+<meta name=generator content="Hugo 0.87.0 with theme even">
+<link rel=canonical href=http://wxjer.github.io/post/springboot%E7%AC%94%E8%AE%B0%E4%B9%8B%E6%B3%A8%E8%A7%A3/>
+<link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
+<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
+<link rel=manifest href=/manifest.json>
+<link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5>
+<link href=/sass/main.min.2683f8f2f8d1aac5100af7ef4afec1af3f00d1ec59fc455760aec62f0228ccd2.css rel=stylesheet>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous>
+<meta property="og:title" content="简明SpringBoot小注解">
+<meta property="og:description" content="学点Springboot">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://wxjer.github.io/post/springboot%E7%AC%94%E8%AE%B0%E4%B9%8B%E6%B3%A8%E8%A7%A3/"><meta property="article:section" content="post">
+<meta property="article:published_time" content="2021-11-17T23:00:01+08:00">
+<meta property="article:modified_time" content="2021-11-17T23:32:01+08:00">
+<meta itemprop=name content="简明SpringBoot小注解">
+<meta itemprop=description content="学点Springboot"><meta itemprop=datePublished content="2021-11-17T23:00:01+08:00">
+<meta itemprop=dateModified content="2021-11-17T23:32:01+08:00">
+<meta itemprop=wordCount content="1117">
+<meta itemprop=keywords content="学无止境,"><meta name=twitter:card content="summary">
+<meta name=twitter:title content="简明SpringBoot小注解">
+<meta name=twitter:description content="学点Springboot"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
+<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
+</head>
+<body>
+<div id=mobile-navbar class=mobile-navbar>
+<div class=mobile-header-logo>
+<a href=/ class=logo>SIRIUS</a>
+</div>
+<div class=mobile-navbar-icon>
+<span></span>
+<span></span>
+<span></span>
+</div>
+</div>
+<nav id=mobile-menu class="mobile-menu slideout-menu">
+<ul class=mobile-menu-list>
+<a href=/>
+<li class=mobile-menu-item>主页</li>
+</a><a href=/post/>
+<li class=mobile-menu-item>归档</li>
+</a><a href=/tags/>
+<li class=mobile-menu-item>标签</li>
+</a><a href=/categories/>
+<li class=mobile-menu-item>类别</li>
+</a><a href=/about/>
+<li class=mobile-menu-item>关于</li>
+</a>
+</ul>
+</nav>
+<div class=container id=mobile-panel>
+<header id=header class=header>
+<div class=logo-wrapper>
+<a href=/ class=logo>SIRIUS</a>
+</div>
+<nav class=site-navbar>
+<ul id=menu class=menu>
+<li class=menu-item>
+<a class=menu-item-link href=/>主页</a>
+</li><li class=menu-item>
+<a class=menu-item-link href=/post/>归档</a>
+</li><li class=menu-item>
+<a class=menu-item-link href=/tags/>标签</a>
+</li><li class=menu-item>
+<a class=menu-item-link href=/categories/>类别</a>
+</li><li class=menu-item>
+<a class=menu-item-link href=/about/>关于</a>
+</li>
+</ul>
+</nav>
+</header>
+<main id=main class=main>
+<div class=content-wrapper>
+<div id=content class=content>
+<article class=post>
+<header class=post-header>
+<h1 class=post-title>简明SpringBoot小注解</h1>
+<div class=post-meta>
+<span class=post-time> 2021-11-17 </span>
+<span class=more-meta> 约 1117 字 </span>
+<span class=more-meta> 预计阅读 3 分钟 </span>
+</div>
+</header>
+<div class=post-toc id=post-toc>
+<h2 class=post-toc-title>文章目录</h2>
+<div class="post-toc-content always-active">
+<nav id=TableOfContents>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href=#注解>注解</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+<div class=post-content>
+<p>SpringBoot之一些注解 -&lt;<a href=https://blog.didispace.com/spring-boot-learning-2x/>翟永超的Springboot的入门教程</a>></p>
+<h3 id=注解>注解</h3>
+<h4 id=controller>@Controller</h4>
+<p>修饰class，用来创建处理http请求的对象</p>
+<h4 id=restcontroller>@RestController</h4>
+<p>Spring4之后加入的注解，原来在<code>@Controller</code>中返回json需要<code>@ResponseBody</code>来配合，如果直接用<code>@RestController</code>替代<code>@Controller</code>就不需要再配置<code>@ResponseBody</code>，默认返回json格式</p>
+<h4 id=requestmapping>@RequestMapping</h4>
+<p>配置url映射。现在更多的也会直接用以Http Method直接关联的映射注解来定义，比如：<code>GetMapping</code>、<code>PostMapping</code>、<code>DeleteMapping</code>、<code>PutMapping</code>等</p>
+<h4 id=configurationproperties>@ConfigurationProperties</h4>
+<p>Spring IOC有一个非常核心的概念——Bean。由Spring容器来负责对Bean的实例化，装配和管理，JavaConfig就是使用注释来描述Bean配置的组件。使用XML来配置Bean所能实现的功能，通过JavaConfig同样可以很好的实现。</p>
+<p>ConfigurationProperties注解，有一个<strong>prefix</strong>属性，通过指定的前缀，绑定配置文件中的配置，该注解可以放在类上，也可以放在方法上</p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-Java data-lang=Java><span class=nd>@Target</span><span class=o>({</span><span class=n>ElementType</span><span class=o>.</span><span class=na>TYPE</span><span class=o>,</span> <span class=n>ElementType</span><span class=o>.</span><span class=na>METHOD</span><span class=o>})</span>
+<span class=nd>@Retention</span><span class=o>(</span><span class=n>RetentionPolicy</span><span class=o>.</span><span class=na>RUNTIME</span><span class=o>)</span>
+<span class=nd>@Documented</span>
+<span class=kd>public</span> <span class=nd>@interface</span> <span class=n>ConfigurationProperties</span> <span class=o>{</span>
+    <span class=nd>@AliasFor</span><span class=o>(</span><span class=s>&#34;prefix&#34;</span><span class=o>)</span>
+    <span class=n>String</span> <span class=nf>value</span><span class=o>()</span> <span class=k>default</span> <span class=s>&#34;&#34;</span><span class=o>;</span>
+
+    <span class=nd>@AliasFor</span><span class=o>(</span><span class=s>&#34;value&#34;</span><span class=o>)</span>
+    <span class=n>String</span> <span class=nf>prefix</span><span class=o>()</span> <span class=k>default</span> <span class=s>&#34;&#34;</span><span class=o>;</span>
+
+    <span class=kt>boolean</span> <span class=nf>ignoreInvalidFields</span><span class=o>()</span> <span class=k>default</span> <span class=kc>false</span><span class=o>;</span>
+
+    <span class=kt>boolean</span> <span class=nf>ignoreUnknownFields</span><span class=o>()</span> <span class=k>default</span> <span class=kc>true</span><span class=o>;</span>
+<span class=o>}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>Sring的有效运行是通过上下文（Bean容器）中Bean的配合完成的，Bean可以简单理解成对象，有些对象需要指定字段内容，那么这些内容我们可以通过配置文件进行绑定，然后将此Bean归还给容器</strong></p>
+<p>例：</p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-yml data-lang=yml><span class=nt>wx</span><span class=p>:</span><span class=w>
+</span><span class=w>  </span><span class=nt>miniapp</span><span class=p>:</span><span class=w>
+</span><span class=w>    </span><span class=nt>configs</span><span class=p>:</span><span class=w>
+</span><span class=w>        </span>- <span class=nt>appid</span><span class=p>:</span><span class=w> </span><span class=c>#微信小程序的appid</span><span class=w>
+</span><span class=w>          </span><span class=nt>secret</span><span class=p>:</span><span class=w> </span><span class=c>#微信小程序的Secret</span><span class=w>
+</span><span class=w>          </span><span class=nt>token</span><span class=p>:</span><span class=w> </span><span class=c>#微信小程序消息服务器配置的token</span><span class=w>
+</span><span class=w>          </span><span class=nt>aesKey</span><span class=p>:</span><span class=w> </span><span class=c>#微信小程序消息服务器配置的EncodingAESKey</span><span class=w>
+</span><span class=w>          </span><span class=nt>msgDataFormat</span><span class=p>:</span><span class=w> </span><span class=l>JSON</span><span class=w>
+</span></code></pre></td></tr></table>
+</div>
+</div><div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=nd>@Data</span>
+<span class=nd>@ConfigurationProperties</span><span class=o>(</span><span class=n>prefix</span> <span class=o>=</span> <span class=s>&#34;wx.miniapp&#34;</span><span class=o>)</span>
+<span class=kd>public</span> <span class=kd>class</span> <span class=nc>WxMaProperties</span> <span class=o>{</span>
+
+    <span class=kd>private</span> <span class=n>List</span><span class=o>&lt;</span><span class=n>Config</span><span class=o>&gt;</span> <span class=n>configs</span><span class=o>;</span>
+
+    <span class=nd>@Data</span>
+    <span class=kd>public</span> <span class=kd>static</span> <span class=kd>class</span> <span class=nc>Config</span> <span class=o>{</span>
+        <span class=cm>/**
+</span><span class=cm>         * 设置微信小程序的appid
+</span><span class=cm>         */</span>
+        <span class=kd>private</span> <span class=n>String</span> <span class=n>appid</span><span class=o>;</span>
+
+        <span class=cm>/**
+</span><span class=cm>         * 设置微信小程序的Secret
+</span><span class=cm>         */</span>
+        <span class=kd>private</span> <span class=n>String</span> <span class=n>secret</span><span class=o>;</span>
+
+        <span class=cm>/**
+</span><span class=cm>         * 设置微信小程序消息服务器配置的token
+</span><span class=cm>         */</span>
+        <span class=kd>private</span> <span class=n>String</span> <span class=n>token</span><span class=o>;</span>
+
+        <span class=cm>/**
+</span><span class=cm>         * 设置微信小程序消息服务器配置的EncodingAESKey
+</span><span class=cm>         */</span>
+        <span class=kd>private</span> <span class=n>String</span> <span class=n>aesKey</span><span class=o>;</span>
+
+        <span class=cm>/**
+</span><span class=cm>         * 消息格式，XML或者JSON
+</span><span class=cm>         */</span>
+        <span class=kd>private</span> <span class=n>String</span> <span class=n>msgDataFormat</span><span class=o>;</span>
+    <span class=o>}</span>
+
+<span class=o>}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id=requestmapping-1>@RequestMapping</h4>
+<h4 id=getmapping>@GetMapping</h4>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=nd>@RequestMapping</span><span class=o>(</span>
+    <span class=n>method</span> <span class=o>=</span> <span class=o>{</span><span class=n>RequestMethod</span><span class=o>.</span><span class=na>GET</span><span class=o>}</span>
+<span class=o>)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id=postmapping>@PostMapping</h4>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=nd>@RequestMapping</span><span class=o>(</span>
+    <span class=n>method</span> <span class=o>=</span> <span class=o>{</span><span class=n>RequestMethod</span><span class=o>.</span><span class=na>POST</span><span class=o>}</span>
+<span class=o>)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id=value>@Value</h4>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=nd>@Component</span>
+<span class=kd>public</span> <span class=kd>class</span> <span class=nc>Book</span> <span class=o>{</span>
+
+    <span class=nd>@Value</span><span class=o>(</span><span class=s>&#34;${book.name}&#34;</span><span class=o>)</span>
+    <span class=kd>private</span> <span class=n>String</span> <span class=n>name</span><span class=o>;</span>
+    <span class=nd>@Value</span><span class=o>(</span><span class=s>&#34;${book.author}&#34;</span><span class=o>)</span>
+    <span class=kd>private</span> <span class=n>String</span> <span class=n>author</span><span class=o>;</span>
+
+    <span class=c1>// 省略getter和setter
+</span><span class=c1></span><span class=o>}</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=l>book.name=SpringCloudInAction</span><span class=w>
+</span><span class=w></span><span class=l>book.author=ZhaiYongchao</span><span class=w>
+</span></code></pre></td></tr></table>
+</div>
+</div><p><code>@Value</code>注解加载属性值的时候可以支持两种表达式来进行配置：</p>
+<ul>
+<li>一种是我们上面介绍的PlaceHolder方式，格式为 <code>${...}</code>，大括号内为PlaceHolder</li>
+<li>另外还可以使用SpEL表达式（Spring Expression Language）， 格式为 <code>#{...}</code>，大括号内为SpEL表达式</li>
+</ul>
+</div>
+<div class=post-copyright>
+<p class=copyright-item>
+<span class=item-title>文章作者</span>
+<span class=item-content>Dabu6aiksg</span>
+</p>
+<p class=copyright-item>
+<span class=item-title>上次更新</span>
+<span class=item-content>
+2021-11-17
+</span>
+</p>
+</div>
+<footer class=post-footer>
+<div class=post-tags>
+<a href=/tags/%E5%AD%A6%E6%97%A0%E6%AD%A2%E5%A2%83/>学无止境</a>
+</div>
+<nav class=post-nav>
+<a class=prev href=/post/springboot%E7%AC%94%E8%AE%B0%E4%B9%8Bproperties/>
+<i class="iconfont icon-left"></i>
+<span class="prev-text nav-default">简明SpringBoot之properties</span>
+<span class="prev-text nav-mobile">上一篇</span>
+</a>
+<a class=next href=/post/aaliyy_jingdou/>
+<span class="next-text nav-default">青龙撸豆</span>
+<span class="next-text nav-mobile">下一篇</span>
+<i class="iconfont icon-right"></i>
+</a>
+</nav>
+</footer>
+</article>
+</div>
+</div>
+</main>
+<footer id=footer class=footer>
+<div class=social-links>
+<a href=http://localhost:1313 class="iconfont icon-github" title=github></a>
+<a href=http://wxjer.github.io/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a>
+</div>
+<div class=copyright>
+<span class=power-by>
+由 <a class=hexo-link href=https://gohugo.io>Hugo</a> 强力驱动
+</span>
+<span class=division>|</span>
+<span class=theme-info>
+主题 -
+<a class=theme-link href=https://github.com/olOwOlo/hugo-theme-even>Even</a>
+</span>
+<span class=copyright-year>
+&copy;
+2021<span class=heart><i class="iconfont icon-heart"></i></span><span>SIRIUS</span>
+</span>
+</div>
+</footer>
+<div class=back-to-top id=back-to-top>
+<i class="iconfont icon-up"></i>
+</div>
+</div>
+<script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin=anonymous></script>
+<script>var languageCode="en".replace(/-/g,'_').replace(/_(.*)/,function(b,a){return b.replace(a,a.toUpperCase())});timeago().render(document.querySelectorAll('.timeago'),languageCode),timeago.cancel()</script>
+<script type=text/javascript src=/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js></script>
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga('create','UA-114666602-1','auto'),ga('set','anonymizeIp',!0),ga('send','pageview'))</script>
+<script async src=https://www.google-analytics.com/analytics.js></script>
+<script id=baidu_analytics>var _hmt=_hmt||[];(function(){var a,b;if(window.location.hostname==='localhost')return;a=document.createElement("script"),a.async=!0,a.src="https://hm.baidu.com/hm.js?7882456b4f4761e1fa7dec9f128b93e3",b=document.getElementsByTagName("script")[0],b.parentNode.insertBefore(a,b)})()</script>
+</body>
+</html>
