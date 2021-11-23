@@ -1,0 +1,325 @@
+<!doctype html><html lang=zh-cn>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<title>排序算法继续 - SIRIUS</title>
+<meta name=renderer content="webkit">
+<meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta http-equiv=cache-control content="no-transform">
+<meta http-equiv=cache-control content="no-siteapp">
+<meta name=theme-color content="#f8f5ec">
+<meta name=msapplication-navbutton-color content="#f8f5ec">
+<meta name=apple-mobile-web-app-capable content="yes">
+<meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec">
+<meta name=author content="Dabu6aiksg"><meta name=description content="第亿此重启学习算法"><meta name=keywords content="SIRIUS,blog,android,kotlin">
+<meta name=generator content="Hugo 0.87.0 with theme even">
+<link rel=canonical href=http://wxjer.github.io/post/algo_%E6%8E%92%E5%BA%8F/>
+<link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
+<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
+<link rel=manifest href=/manifest.json>
+<link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5>
+<link href=/sass/main.min.2683f8f2f8d1aac5100af7ef4afec1af3f00d1ec59fc455760aec62f0228ccd2.css rel=stylesheet>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous>
+<meta property="og:title" content="排序算法继续">
+<meta property="og:description" content="第亿此重启学习算法">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://wxjer.github.io/post/algo_%E6%8E%92%E5%BA%8F/"><meta property="article:section" content="post">
+<meta property="article:published_time" content="2021-11-18T23:32:01+08:00">
+<meta property="article:modified_time" content="2021-11-23T23:37:01+08:00">
+<meta itemprop=name content="排序算法继续">
+<meta itemprop=description content="第亿此重启学习算法"><meta itemprop=datePublished content="2021-11-18T23:32:01+08:00">
+<meta itemprop=dateModified content="2021-11-23T23:37:01+08:00">
+<meta itemprop=wordCount content="704">
+<meta itemprop=keywords content="算法,排序,递归,桶排序,堆,堆排序,快排,归并排序,基数排序,"><meta name=twitter:card content="summary">
+<meta name=twitter:title content="排序算法继续">
+<meta name=twitter:description content="第亿此重启学习算法"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
+<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
+</head>
+<body>
+<div id=mobile-navbar class=mobile-navbar>
+<div class=mobile-header-logo>
+<a href=/ class=logo>SIRIUS</a>
+</div>
+<div class=mobile-navbar-icon>
+<span></span>
+<span></span>
+<span></span>
+</div>
+</div>
+<nav id=mobile-menu class="mobile-menu slideout-menu">
+<ul class=mobile-menu-list>
+<a href=/>
+<li class=mobile-menu-item>主页</li>
+</a><a href=/post/>
+<li class=mobile-menu-item>归档</li>
+</a><a href=/tags/>
+<li class=mobile-menu-item>标签</li>
+</a><a href=/categories/>
+<li class=mobile-menu-item>类别</li>
+</a><a href=/about/>
+<li class=mobile-menu-item>关于</li>
+</a>
+</ul>
+</nav>
+<div class=container id=mobile-panel>
+<header id=header class=header>
+<div class=logo-wrapper>
+<a href=/ class=logo>SIRIUS</a>
+</div>
+<nav class=site-navbar>
+<ul id=menu class=menu>
+<li class=menu-item>
+<a class=menu-item-link href=/>主页</a>
+</li><li class=menu-item>
+<a class=menu-item-link href=/post/>归档</a>
+</li><li class=menu-item>
+<a class=menu-item-link href=/tags/>标签</a>
+</li><li class=menu-item>
+<a class=menu-item-link href=/categories/>类别</a>
+</li><li class=menu-item>
+<a class=menu-item-link href=/about/>关于</a>
+</li>
+</ul>
+</nav>
+</header>
+<main id=main class=main>
+<div class=content-wrapper>
+<div id=content class=content>
+<article class=post>
+<header class=post-header>
+<h1 class=post-title>排序算法继续</h1>
+<div class=post-meta>
+<span class=post-time> 2021-11-18 </span>
+<div class=post-category>
+<a href=/categories/%E5%AD%A6%E6%97%A0%E6%AD%A2%E5%A2%83/> 学无止境 </a>
+<a href=/categories/%E7%AE%97%E6%B3%95%E5%BE%97%E5%AD%A6/> 算法得学 </a>
+</div>
+<span class=more-meta> 约 704 字 </span>
+<span class=more-meta> 预计阅读 2 分钟 </span>
+</div>
+</header>
+<div class=post-toc id=post-toc>
+<h2 class=post-toc-title>文章目录</h2>
+<div class="post-toc-content always-active">
+<nav id=TableOfContents>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+<div class=post-content>
+<p>归并排序</p>
+<h4 id=归并排序>归并排序</h4>
+<p><img src=http://r2kgdeh5c.hn-bkt.clouddn.com/image-20211122222244583.png alt=image-20211122222244583></p>
+<p><img src=http://r2kgdeh5c.hn-bkt.clouddn.com/image-20211122222323506.png alt=image-20211122222323506></p>
+<p><img src=http://r2kgdeh5c.hn-bkt.clouddn.com/image-20211122222431739.png alt=image-20211122222431739></p>
+<h5 id=master公式>master公式</h5>
+<p><img src=http://r2kgdeh5c.hn-bkt.clouddn.com/image-20211122222637310.png alt=image-20211122222637310></p>
+<h5 id=实质>实质</h5>
+<p>没有浪费每次小排序的结果，最后合并在一起，而选择排序，冒泡等n^2的浪费了每次比较结果</p>
+<h5 id=扩展>扩展</h5>
+<p><img src=http://r2kgdeh5c.hn-bkt.clouddn.com/image-20211122223239569.png alt=image-20211122223239569></p>
+<p><img src=http://r2kgdeh5c.hn-bkt.clouddn.com/image-20211122224045759.png alt=image-20211122224045759></p>
+<p><img src=http://r2kgdeh5c.hn-bkt.clouddn.com/image-20211122224001994.png alt=image-20211122224001994></p>
+<p><img src=http://r2kgdeh5c.hn-bkt.clouddn.com/image-20211122224717306.png alt=image-20211122224717306></p>
+<h5 id=逆序对问题>逆序对问题</h5>
+<p>同理</p>
+<h4 id=快排>快排</h4>
+<h5 id=荷兰国旗>荷兰国旗</h5>
+<p><img src=http://r2kgdeh5c.hn-bkt.clouddn.com/image-20211122225646389.png alt=image-20211122225646389></p>
+<p><img src=http://r2kgdeh5c.hn-bkt.clouddn.com/image-20211122225834119.png alt=image-20211122225834119></p>
+<p><img src=http://r2kgdeh5c.hn-bkt.clouddn.com/image-20211122225925272.png alt=image-20211122225925272></p>
+<p><img src=http://r2kgdeh5c.hn-bkt.clouddn.com/image-20211122230308259.png alt=image-20211122230308259></p>
+<h5 id=快排10-n2>快排1.0 n^2</h5>
+<p><img src=http://r2kgdeh5c.hn-bkt.clouddn.com/image-20211122230732031.png alt=image-20211122230732031></p>
+<h5 id=快排20>快排2.0</h5>
+<p>荷兰国旗方法，因为搞定了一批==5的数 所以快一些 n^2</p>
+<p><img src=http://r2kgdeh5c.hn-bkt.clouddn.com/image-20211122230945780.png alt=image-20211122230945780></p>
+<h5 id=快排30>快排3.0</h5>
+<p>随机选一个数作为比较数，通过随机概率上计算复杂度为 nlogn</p>
+<p><img src=http://r2kgdeh5c.hn-bkt.clouddn.com/image-20211122231850178.png alt=image-20211122231850178></p>
+<h5 id=空间复杂度>空间复杂度</h5>
+<p>最差的情况O(n) 开n个数组， 最优logn，形式为树， 树的子节点可以在递归回退的时候销毁，节省空间</p>
+<h4 id=堆>堆</h4>
+<p>是一种特殊完全二叉树</p>
+<p>左节点：2*i+1</p>
+<p>右节点 2*1 +2</p>
+<p>父节点：（i-1)/2</p>
+<p><img src=http://r2kgdeh5c.hn-bkt.clouddn.com/image-20211123224832456.png alt=image-20211123224832456></p>
+<p><img src=http://r2kgdeh5c.hn-bkt.clouddn.com/image-20211123220927700.png alt=image-20211123220927700></p>
+<h5 id=大根堆>大根堆</h5>
+<p>在这个二叉树，每个子树最大值都是根</p>
+<p><img src=http://r2kgdeh5c.hn-bkt.clouddn.com/image-20211123221004334.png alt=image-20211123221004334></p>
+<h5 id=小根堆>小根堆</h5>
+<p>同理</p>
+<h5 id=构建大根堆>构建大根堆</h5>
+<p>每添加一个节点，跟自己的父节点比较</p>
+<p><img src=http://r2kgdeh5c.hn-bkt.clouddn.com/image-20211123221241976.png alt=image-20211123221241976></p>
+<p><img src=http://r2kgdeh5c.hn-bkt.clouddn.com/image-20211123221259847.png alt=image-20211123221259847></p>
+<h5 id=heapinsert代码>heapInsert代码</h5>
+<p><img src=http://r2kgdeh5c.hn-bkt.clouddn.com/image-20211123222044367.png alt=image-20211123222044367></p>
+<h5 id=大根堆最大值>大根堆最大值</h5>
+<p>index = 0</p>
+<h5 id=heapify>Heapify</h5>
+<p>去掉大根堆最大值并保持大根堆（Heapify）</p>
+<p><img src=http://r2kgdeh5c.hn-bkt.clouddn.com/image-20211123222057624.png alt=image-20211123222057624></p>
+<h5 id=某个位置去掉并保持堆结构>某个位置去掉并保持堆结构</h5>
+<ul>
+<li>如果这个数比之前数大，向上heapinsert</li>
+<li>如果小，向下heapify</li>
+</ul>
+<h5 id=时间复杂度>时间复杂度</h5>
+<p>logn</p>
+<h5 id=空间复杂度-1>空间复杂度</h5>
+<p>1</p>
+<h4 id=堆排序>堆排序</h4>
+<ol>
+<li>先将数组改成堆 heapinsert</li>
+<li>将0位置上的数（最大值）跟最后一个数做交换，然后heapsize&ndash;</li>
+<li>然后从0位置向下heapify</li>
+<li>重复2、3</li>
+</ol>
+<h5 id=代码>代码</h5>
+<p><img src=http://r2kgdeh5c.hn-bkt.clouddn.com/image-20211123223221269.png alt=image-20211123223221269></p>
+<h5 id=时间复杂度-1>时间复杂度</h5>
+<p>Nlogn</p>
+<h5 id=优化>优化</h5>
+<p>构建堆的时候从底层节点开始向上heapify 复杂度为n，而用heapinsert为logn 所以快了一点</p>
+<p><img src=http://r2kgdeh5c.hn-bkt.clouddn.com/image-20211123224323311.png alt=image-20211123224323311></p>
+<p><img src=http://r2kgdeh5c.hn-bkt.clouddn.com/image-20211123224406470.png alt=image-20211123224406470></p>
+<p><img src=http://r2kgdeh5c.hn-bkt.clouddn.com/image-20211123224611430.png alt=image-20211123224611430></p>
+<p>但蓝色区域未经优化，还是nlogn，所以整体复杂度还是nlogn</p>
+<h5 id=扩展题目>扩展题目</h5>
+<p><img src=http://r2kgdeh5c.hn-bkt.clouddn.com/image-20211123224901672.png alt=image-20211123224901672></p>
+<h6 id=代码-1>代码</h6>
+<p>优先级队列底层小根堆</p>
+<ul>
+<li>
+<p>扩容代价</p>
+<p><img src=http://r2kgdeh5c.hn-bkt.clouddn.com/image-20211123225426221.png alt></p>
+</li>
+<li>
+<p>某些情况得手写堆来实现 <strong>删掉某个位置并保持堆</strong> 的功能</p>
+</li>
+</ul>
+<p><img src=http://r2kgdeh5c.hn-bkt.clouddn.com/image-20211123225740184.png alt=image-20211123225740184></p>
+<h5 id=比较器>比较器</h5>
+<p><img src=http://r2kgdeh5c.hn-bkt.clouddn.com/image-20211123230352510.png alt=image-20211123230352510></p>
+<p>构建小根堆的时候传入一个比较器</p>
+<p><img src=http://r2kgdeh5c.hn-bkt.clouddn.com/image-20211123230338328.png alt=image-20211123230338328></p>
+<h4 id=桶排序>桶排序</h4>
+<p>基于比较数据情况（大小范围）定制</p>
+<h4 id=基数排序>基数排序</h4>
+<p>仍然需要根据数据情况定制（根据进制桶）</p>
+<ol>
+<li>
+<p>先根据个位数排序入桶</p>
+<p><img src=http://r2kgdeh5c.hn-bkt.clouddn.com/image-20211123230841589.png alt></p>
+</li>
+<li>
+<p>然后从左到右将桶中的数据倒出来</p>
+<p><img src=http://r2kgdeh5c.hn-bkt.clouddn.com/image-20211123230939014.png alt=image-20211123230939014></p>
+</li>
+<li>
+<p>然后根据十位数入桶 并倒出来</p>
+<p><img src=http://r2kgdeh5c.hn-bkt.clouddn.com/image-20211123231012494.png alt=image-20211123231012494></p>
+</li>
+<li>
+<p>然后百位数排序并倒出来</p>
+<p><img src=http://r2kgdeh5c.hn-bkt.clouddn.com/image-20211123231035687.png alt=image-20211123231035687></p>
+</li>
+</ol>
+<h6 id=代码-2>代码</h6>
+<p><a href="https://www.bilibili.com/video/BV13g41157hK?p=4&t=8215.2">https://www.bilibili.com/video/BV13g41157hK?p=4&t=8215.2</a></p>
+<p><img src=http://r2kgdeh5c.hn-bkt.clouddn.com/image-20211123231243591.png alt=image-20211123231243591></p>
+<p><img src=http://r2kgdeh5c.hn-bkt.clouddn.com/image-20211123232834056.png alt=image-20211123232834056></p>
+<p><img src=http://r2kgdeh5c.hn-bkt.clouddn.com/image-20211123232950655.png alt=image-20211123232950655></p>
+<p><img src=http://r2kgdeh5c.hn-bkt.clouddn.com/image-20211123233636098.png alt=image-20211123233636098></p>
+</div>
+<div class=post-copyright>
+<p class=copyright-item>
+<span class=item-title>文章作者</span>
+<span class=item-content>Dabu6aiksg</span>
+</p>
+<p class=copyright-item>
+<span class=item-title>上次更新</span>
+<span class=item-content>
+2021-11-23
+</span>
+</p>
+</div>
+<footer class=post-footer>
+<div class=post-tags>
+<a href=/tags/%E7%AE%97%E6%B3%95/>算法</a>
+<a href=/tags/%E6%8E%92%E5%BA%8F/>排序</a>
+<a href=/tags/%E9%80%92%E5%BD%92/>递归</a>
+<a href=/tags/%E6%A1%B6%E6%8E%92%E5%BA%8F/>桶排序</a>
+<a href=/tags/%E5%A0%86/>堆</a>
+<a href=/tags/%E5%A0%86%E6%8E%92%E5%BA%8F/>堆排序</a>
+<a href=/tags/%E5%BF%AB%E6%8E%92/>快排</a>
+<a href=/tags/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/>归并排序</a>
+<a href=/tags/%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F/>基数排序</a>
+</div>
+<nav class=post-nav>
+<a class=prev href=/post/algo_%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/>
+<i class="iconfont icon-left"></i>
+<span class="prev-text nav-default">学习时间复杂度_排序算法_递归</span>
+<span class="prev-text nav-mobile">上一篇</span>
+</a>
+<a class=next href=/post/restful_api/>
+<span class="next-text nav-default">简明SpringBoot小RESTful API</span>
+<span class="next-text nav-mobile">下一篇</span>
+<i class="iconfont icon-right"></i>
+</a>
+</nav>
+</footer>
+</article>
+</div>
+</div>
+</main>
+<footer id=footer class=footer>
+<div class=social-links>
+<a href=http://localhost:1313 class="iconfont icon-github" title=github></a>
+<a href=http://wxjer.github.io/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a>
+</div>
+<div class=copyright>
+<span class=power-by>
+由 <a class=hexo-link href=https://gohugo.io>Hugo</a> 强力驱动
+</span>
+<span class=division>|</span>
+<span class=theme-info>
+主题 -
+<a class=theme-link href=https://github.com/olOwOlo/hugo-theme-even>Even</a>
+</span>
+<span class=copyright-year>
+&copy;
+2021<span class=heart><i class="iconfont icon-heart"></i></span><span>SIRIUS</span>
+</span>
+</div>
+</footer>
+<div class=back-to-top id=back-to-top>
+<i class="iconfont icon-up"></i>
+</div>
+</div>
+<script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin=anonymous></script>
+<script>var languageCode="en".replace(/-/g,'_').replace(/_(.*)/,function(b,a){return b.replace(a,a.toUpperCase())});timeago().render(document.querySelectorAll('.timeago'),languageCode),timeago.cancel()</script>
+<script type=text/javascript src=/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js></script>
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga('create','UA-114666602-1','auto'),ga('set','anonymizeIp',!0),ga('send','pageview'))</script>
+<script async src=https://www.google-analytics.com/analytics.js></script>
+<script id=baidu_analytics>var _hmt=_hmt||[];(function(){var a,b;if(window.location.hostname==='localhost')return;a=document.createElement("script"),a.async=!0,a.src="https://hm.baidu.com/hm.js?7882456b4f4761e1fa7dec9f128b93e3",b=document.getElementsByTagName("script")[0],b.parentNode.insertBefore(a,b)})()</script>
+</body>
+</html>
