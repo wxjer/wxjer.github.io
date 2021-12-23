@@ -2,7 +2,7 @@
 <head>
 <meta charset=utf-8>
 <meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
-<title>SIRIUS</title>
+<title>Http基础 - SIRIUS</title>
 <meta name=renderer content="webkit">
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
 <meta http-equiv=cache-control content="no-transform">
@@ -11,11 +11,11 @@
 <meta name=msapplication-navbutton-color content="#f8f5ec">
 <meta name=apple-mobile-web-app-capable content="yes">
 <meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec">
-<meta name=author content="Sirius"><meta name=description content="SIRIUS Tech."><meta name=keywords content="SIRIUS,blog,android,kotlin">
+<meta name=author content="Dabu6aiksg"><meta name=description content="HTTP基础
+一次配置，终身使用
+"><meta name=keywords content="SIRIUS,blog,android,kotlin">
 <meta name=generator content="Hugo 0.87.0 with theme even">
-<link rel=canonical href=http://wxjer.github.io/>
-<link href=http://wxjer.github.io/index.xml rel=alternate type=application/rss+xml title=SIRIUS>
-<link href=http://wxjer.github.io/index.xml rel=feed type=application/rss+xml title=SIRIUS>
+<link rel=canonical href=http://wxjer.github.io/post/http/>
 <link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
 <link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
 <link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
@@ -24,14 +24,22 @@
 <script async src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script>
 <link href=/sass/main.min.2683f8f2f8d1aac5100af7ef4afec1af3f00d1ec59fc455760aec62f0228ccd2.css rel=stylesheet>
 <link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous>
-<meta property="og:title" content="SIRIUS">
-<meta property="og:description" content="SIRIUS Tech.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="http://wxjer.github.io/">
-<meta itemprop=name content="SIRIUS">
-<meta itemprop=description content="SIRIUS Tech."><meta name=twitter:card content="summary">
-<meta name=twitter:title content="SIRIUS">
-<meta name=twitter:description content="SIRIUS Tech."><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
+<meta property="og:title" content="Http基础">
+<meta property="og:description" content="HTTP基础
+一次配置，终身使用">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://wxjer.github.io/post/http/"><meta property="article:section" content="post">
+<meta property="article:published_time" content="2021-12-22T16:19:22+08:00">
+<meta property="article:modified_time" content="2021-12-23T20:35:22+08:00">
+<meta itemprop=name content="Http基础">
+<meta itemprop=description content="HTTP基础
+一次配置，终身使用"><meta itemprop=datePublished content="2021-12-22T16:19:22+08:00">
+<meta itemprop=dateModified content="2021-12-23T20:35:22+08:00">
+<meta itemprop=wordCount content="613">
+<meta itemprop=keywords content="Android,HTTP,"><meta name=twitter:card content="summary">
+<meta name=twitter:title content="Http基础">
+<meta name=twitter:description content="HTTP基础
+一次配置，终身使用"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
 </head>
 <body>
@@ -84,30 +92,9 @@
 <main id=main class=main>
 <div class=content-wrapper>
 <div id=content class=content>
-<section id=posts class=posts>
 <article class=post>
 <header class=post-header>
-<h1 class=post-title><a class=post-link href=/post/%E7%BC%96%E7%A0%81%E7%9B%B8%E5%85%B3/>编码、加密、hash、序列化、字符集</a></h1>
-<div class=post-meta>
-<span class=post-time> 2021-12-22 </span>
-<div class=post-category>
-<a href=/categories/%E5%AD%A6%E6%97%A0%E6%AD%A2%E5%A2%83/> 学无止境 </a>
-</div>
-<span class=more-meta> 约 1035 字 </span>
-<span class=more-meta> 预计阅读 3 分钟 </span>
-</div>
-</header>
-<div class=post-content>
-<div class=post-summary>
-</div>
-<div class=read-more>
-<a href=/post/%E7%BC%96%E7%A0%81%E7%9B%B8%E5%85%B3/ class=read-more-link>阅读更多</a>
-</div>
-</div>
-</article>
-<article class=post>
-<header class=post-header>
-<h1 class=post-title><a class=post-link href=/post/http/>Http基础</a></h1>
+<h1 class=post-title>Http基础</h1>
 <div class=post-meta>
 <span class=post-time> 2021-12-22 </span>
 <div class=post-category>
@@ -117,88 +104,163 @@
 <span class=more-meta> 预计阅读 2 分钟 </span>
 </div>
 </header>
+<div class=post-toc id=post-toc>
+<h2 class=post-toc-title>文章目录</h2>
+<div class="post-toc-content always-active">
+<nav id=TableOfContents>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href=#http到底是什么>HTTP到底是什么</a></li>
+<li><a href=#http工作方式>HTTP工作方式</a></li>
+<li><a href=#rest-ful-http>REST ful HTTP</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+</div>
 <div class=post-content>
-<div class=post-summary>
 <p>HTTP基础</p>
 <p>一次配置，终身使用</p>
+<h3 id=http到底是什么>HTTP到底是什么</h3>
+<h4 id=两种最直观的印象>两种最直观的印象</h4>
+<p>浏览器输入地址，打开网页</p>
+<p>Android中发送网络请求，返回对应内容</p>
+<h4 id=hypertext-transfer-protocol-超文本传输协议>HyperText Transfer Protocol 超文本传输协议</h4>
+<p>超文本：在电脑中显示，含有可以指向其他文本的连接的文本</p>
+<h3 id=http工作方式>HTTP工作方式</h3>
+<h4 id=报文>报文</h4>
+<ol>
+<li>
+<p>URL->HTTP报文</p>
+<p><img src=https://img.5bug.cn/image-20211222165404524.webp alt></p>
+</li>
+<li>
+<p>请求报文格式</p>
+<p><img src=https://img.5bug.cn/image-20211222171357108.webp alt=image-20211222171357108></p>
+</li>
+<li>
+<p>响应报文格式</p>
+<p><img src=https://img.5bug.cn/image-20211222172439315.webp alt=image-20211222172439315></p>
+</li>
+</ol>
+<h4 id=常用请求方法>常用请求方法</h4>
+<ul>
+<li>
+<p>GET</p>
+<p>获取资源，没有body</p>
+</li>
+<li>
+<p>POST</p>
+<p>增加或修改资源，有body</p>
+</li>
+<li>
+<p>PUT</p>
+<p>修改资源 有body</p>
+</li>
+<li>
+<p>DELETE</p>
+<p>修改资源 无body</p>
+</li>
+<li>
+<p>HEAD</p>
+<p>跟GET一样，但是响应无body，例如下载之前先获取大小，支不支持断电续传 分段下载</p>
+</li>
+</ul>
+<h4 id=状态码>状态码</h4>
+<ul>
+<li>1xx: 临时性消息</li>
+<li>2xx: 成功</li>
+<li>3xx: 重定向 301永久迁移 302临时迁移</li>
+<li>4xx: 客户端错误 401未授权 404 not found</li>
+<li>5xx: 服务器错误</li>
+</ul>
+<h4 id=header>Header</h4>
+<p>作用：HTTP消息的元数据（metadata)</p>
+<ol>
+<li>
+<p>Host：服务器主机地址</p>
+</li>
+<li>
+<p>Content-Length：内容的长度（字节）</p>
+</li>
+<li>
+<p>Content-type：内容的类型</p>
+<ul>
+<li>
+<p>text/html: html文本，用于浏览器页面响应</p>
+</li>
+<li>
+<p>application/x-www-form-urlencoded：普通表单，encoded URL格式</p>
+</li>
+<li>
+<p>multipart/form-data 多格式部分，一般用于传输包含二进制内容的多项内容</p>
+</li>
+<li>
+<p>application/json json形式，用于web api 或post put请求</p>
+</li>
+<li>
+<p>image/jpeg 单文件，用于web api响应或post、put请求</p>
+</li>
+<li>
+<p>Chunked Transfer Encoding</p>
+<p>Transfer-Encoding：chunked</p>
+<p>表示body长度无法确定 ，在服务器还未获取到完整内容时，更快对客户端做出响应，减少用户等待</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Location ：重定向的目标URL</p>
+</li>
+<li>
+<p>User-Agent：用户代理</p>
+</li>
+<li>
+<p>Accept-Ranges :分段加载</p>
+</li>
+<li>
+<p>cache</p>
+</li>
+</ol>
+<h3 id=rest-ful-http>REST ful HTTP</h3>
 </div>
-<div class=read-more>
-<a href=/post/http/ class=read-more-link>阅读更多</a>
+<div class=post-copyright>
+<p class=copyright-item>
+<span class=item-title>文章作者</span>
+<span class=item-content>Dabu6aiksg</span>
+</p>
+<p class=copyright-item>
+<span class=item-title>上次更新</span>
+<span class=item-content>
+2021-12-23
+<a href=https://github.com/wxjer/wxjer.github.io/commit/f8245f433314dbcac7bdbc549485d0963b59b485 title=yep>(f8245f4)</a>
+</span>
+</p>
 </div>
+<footer class=post-footer>
+<div class=post-tags>
+<a href=/tags/android/>Android</a>
+<a href=/tags/http/>HTTP</a>
 </div>
-</article>
-<article class=post>
-<header class=post-header>
-<h1 class=post-title><a class=post-link href=/post/%E4%BA%8C%E5%8F%89%E6%A0%91/>二叉树了</a></h1>
-<div class=post-meta>
-<span class=post-time> 2021-11-24 </span>
-<div class=post-category>
-<a href=/categories/%E5%AD%A6%E6%97%A0%E6%AD%A2%E5%A2%83/> 学无止境 </a>
-<a href=/categories/%E7%AE%97%E6%B3%95%E5%BE%97%E5%AD%A6/> 算法得学 </a>
-</div>
-<span class=more-meta> 约 131 字 </span>
-<span class=more-meta> 预计阅读 1 分钟 </span>
-</div>
-</header>
-<div class=post-content>
-<div class=post-summary>
-<p>二叉树</p>
-</div>
-<div class=read-more>
-<a href=/post/%E4%BA%8C%E5%8F%89%E6%A0%91/ class=read-more-link>阅读更多</a>
-</div>
-</div>
-</article>
-<article class=post>
-<header class=post-header>
-<h1 class=post-title><a class=post-link href=/post/%E9%93%BE%E8%A1%A8/>链表了</a></h1>
-<div class=post-meta>
-<span class=post-time> 2021-11-24 </span>
-<div class=post-category>
-<a href=/categories/%E5%AD%A6%E6%97%A0%E6%AD%A2%E5%A2%83/> 学无止境 </a>
-<a href=/categories/%E7%AE%97%E6%B3%95%E5%BE%97%E5%AD%A6/> 算法得学 </a>
-</div>
-<span class=more-meta> 约 538 字 </span>
-<span class=more-meta> 预计阅读 2 分钟 </span>
-</div>
-</header>
-<div class=post-content>
-<div class=post-summary>
-<p>链表</p>
-</div>
-<div class=read-more>
-<a href=/post/%E9%93%BE%E8%A1%A8/ class=read-more-link>阅读更多</a>
-</div>
-</div>
-</article>
-<article class=post>
-<header class=post-header>
-<h1 class=post-title><a class=post-link href=/post/%E5%B0%86%E9%97%AE%E9%A2%98%E5%8F%98%E6%88%90%E4%BB%A3%E7%A0%81/>将问题变成代码</a></h1>
-<div class=post-meta>
-<span class=post-time> 2021-11-23 </span>
-<div class=post-category>
-<a href=/categories/%E6%8C%91%E6%88%98%E7%BC%96%E7%A8%8B/> 挑战编程 </a>
-</div>
-<span class=more-meta> 约 1562 字 </span>
-<span class=more-meta> 预计阅读 4 分钟 </span>
-</div>
-</header>
-<div class=post-content>
-<div class=post-summary>
-<p>创建一个简单的消费计算程序。该程序应该提示用户输入账单金额和小费比例，该程序必须计算出小费，并显示小费和总金额</p>
-</div>
-<div class=read-more>
-<a href=/post/%E5%B0%86%E9%97%AE%E9%A2%98%E5%8F%98%E6%88%90%E4%BB%A3%E7%A0%81/ class=read-more-link>阅读更多</a>
-</div>
-</div>
-</article>
-</section>
-<nav class=pagination>
-<a class=next href=/page/2/>
-<span class=next-text>下一页</span>
+<nav class=post-nav>
+<a class=prev href=/post/%E7%BC%96%E7%A0%81%E7%9B%B8%E5%85%B3/>
+<i class="iconfont icon-left"></i>
+<span class="prev-text nav-default">编码、加密、hash、序列化、字符集</span>
+<span class="prev-text nav-mobile">上一篇</span>
+</a>
+<a class=next href=/post/%E4%BA%8C%E5%8F%89%E6%A0%91/>
+<span class="next-text nav-default">二叉树了</span>
+<span class="next-text nav-mobile">下一篇</span>
 <i class="iconfont icon-right"></i>
 </a>
 </nav>
+</footer>
+</article>
 </div>
 </div>
 </main>
