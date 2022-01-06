@@ -2,7 +2,7 @@
 <head>
 <meta charset=utf-8>
 <meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
-<title>分类 - SIRIUS</title>
+<title>登录和授权 - SIRIUS</title>
 <meta name=renderer content="webkit">
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
 <meta http-equiv=cache-control content="no-transform">
@@ -11,11 +11,9 @@
 <meta name=msapplication-navbutton-color content="#f8f5ec">
 <meta name=apple-mobile-web-app-capable content="yes">
 <meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec">
-<meta name=author content="Sirius"><meta name=description content="SIRIUS Tech."><meta name=keywords content="SIRIUS,blog,android,kotlin">
+<meta name=author content="Sirius"><meta name=description content><meta name=keywords content="SIRIUS,blog,android,kotlin">
 <meta name=generator content="Hugo 0.87.0 with theme even">
-<link rel=canonical href=http://wxjer.github.io/categories/>
-<link href=http://wxjer.github.io/categories/index.xml rel=alternate type=application/rss+xml title=SIRIUS>
-<link href=http://wxjer.github.io/categories/index.xml rel=feed type=application/rss+xml title=SIRIUS>
+<link rel=canonical href=http://wxjer.github.io/post/%E7%99%BB%E5%BD%95%E5%92%8C%E6%8E%88%E6%9D%83/>
 <link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
 <link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
 <link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
@@ -24,14 +22,16 @@
 <script async src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script>
 <link href=/sass/main.min.2683f8f2f8d1aac5100af7ef4afec1af3f00d1ec59fc455760aec62f0228ccd2.css rel=stylesheet>
 <link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous>
-<meta property="og:title" content="Categories">
-<meta property="og:description" content="SIRIUS Tech.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="http://wxjer.github.io/categories/">
-<meta itemprop=name content="Categories">
-<meta itemprop=description content="SIRIUS Tech."><meta name=twitter:card content="summary">
-<meta name=twitter:title content="Categories">
-<meta name=twitter:description content="SIRIUS Tech."><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
+<meta property="og:title" content="登录和授权">
+<meta property="og:description" content>
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://wxjer.github.io/post/%E7%99%BB%E5%BD%95%E5%92%8C%E6%8E%88%E6%9D%83/"><meta property="article:section" content="post">
+<meta itemprop=name content="登录和授权">
+<meta itemprop=description content>
+<meta itemprop=wordCount content="120">
+<meta itemprop=keywords content><meta name=twitter:card content="summary">
+<meta name=twitter:title content="登录和授权">
+<meta name=twitter:description content><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
 </head>
 <body>
@@ -84,33 +84,94 @@
 <main id=main class=main>
 <div class=content-wrapper>
 <div id=content class=content>
-<div class=terms>
-<div class=terms-title>
-共计 5 个分类
+<article class=post>
+<header class=post-header>
+<h1 class=post-title>登录和授权</h1>
+<div class=post-meta>
+<span class=post-time> 0001-01-01 </span>
+<span class=more-meta> 约 120 字 </span>
+<span class=more-meta> 预计阅读 1 分钟 </span>
 </div>
-<div class=terms-tags>
-<a class=terms-link href=/categories/%E5%AD%A6%E6%97%A0%E6%AD%A2%E5%A2%83/>
-学无止境
-<span class=terms-count>9</span>
-</a>
-<a class=terms-link href=/categories/%E7%AE%97%E6%B3%95%E5%BE%97%E5%AD%A6/>
-算法得学
-<span class=terms-count>4</span>
-</a>
-<a class=terms-link href=/categories/%E9%99%84%E5%BA%B8%E9%A3%8E%E9%9B%85/>
-附庸风雅
-<span class=terms-count>2</span>
-</a>
-<a class=terms-link href=/categories/%E6%8A%98%E8%85%BE%E6%8A%98%E8%85%BE/>
-折腾折腾
-<span class=terms-count>1</span>
-</a>
-<a class=terms-link href=/categories/%E6%8C%91%E6%88%98%E7%BC%96%E7%A8%8B/>
-挑战编程
-<span class=terms-count>1</span>
-</a>
+</header>
+<div class=post-toc id=post-toc>
+<h2 class=post-toc-title>文章目录</h2>
+<div class="post-toc-content always-active">
+<nav id=TableOfContents>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href=#cookie>Cookie</a></li>
+<li><a href=#authorization>Authorization</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
 </div>
 </div>
+<div class=post-outdated>
+<div class=warn>
+<p>【注意】最后更新于 <span class=timeago datetime=0001-01-01T00:00:00 title="January 1, 0001">January 1, 0001</span>，文中内容可能已过时，请谨慎使用。</p>
+</div>
+</div>
+<div class=post-content>
+<h3 id=cookie>Cookie</h3>
+<blockquote>
+<p>cookie的起源：购物车</p>
+</blockquote>
+<h4 id=工作机制>工作机制</h4>
+<p><img src=https://img.5bug.cn/image-20220106213854345.webp alt=image-20220106213854345></p>
+<h4 id=作用>作用</h4>
+<h5 id=管理登录状态-session>管理登录状态-session</h5>
+<p><img src=https://img.5bug.cn/image-20220106214323899.webp alt=image-20220106214323899></p>
+<p><img src=https://img.5bug.cn/image-20220106214351392.webp alt=image-20220106214351392></p>
+<p><img src=https://img.5bug.cn/image-20220106214414711.webp alt=image-20220106214414711></p>
+<h5 id=个性化-保存个性化设置>个性化-保存个性化设置</h5>
+<p><img src=https://img.5bug.cn/image-20220106214528426.webp alt=image-20220106214528426></p>
+<p><img src=https://img.5bug.cn/image-20220106214549801.webp alt=image-20220106214549801></p>
+<h5 id=分析用户行为>分析用户行为</h5>
+<p><img src=https://img.5bug.cn/image-20220106214819442.webp alt=image-20220106214819442></p>
+<p>通过第三方统计来记录你的用户画像，访问数据之类</p>
+<p><img src=https://img.5bug.cn/image-20220106214943967.webp alt=image-20220106214943967></p>
+<h4 id=xss跨站攻击http>XSS：跨站攻击(http)</h4>
+<h4 id=xsrf-跨站请求访问-通过refere记录来辨别>XSRF 跨站请求访问 通过Refere记录来辨别</h4>
+<h3 id=authorization>Authorization</h3>
+<h4 id=basic-token>Basic token</h4>
+<p><img src=https://img.5bug.cn/image-20220106215453632.webp alt=image-20220106215453632></p>
+<p>![image-20220106215540173](/Users/wxjer/Library/Application Support/typora-user-images/image-20220106215540173.png)</p>
+<h4 id=bearer-token>Bearer token</h4>
+<h5 id=oauth2>OAuth2</h5>
+<p><img src=https://img.5bug.cn/image-20220106221942528.webp alt=image-20220106221942528></p>
+<p><img src=https://img.5bug.cn/image-20220106222105490.webp alt=image-20220106222105490></p>
+<p><img src=https://img.5bug.cn/image-20220106222236704.webp alt=image-20220106222236704></p>
+<p><img src=https://img.5bug.cn/image-20220106222409773.webp alt=image-20220106222409773></p>
+<h5 id=微信登录>微信登录</h5>
+</div>
+<div class=post-copyright>
+<p class=copyright-item>
+<span class=item-title>文章作者</span>
+<span class=item-content>Sirius</span>
+</p>
+<p class=copyright-item>
+<span class=item-title>上次更新</span>
+<span class=item-content>
+0001-01-01
+</span>
+</p>
+</div>
+<footer class=post-footer>
+<nav class=post-nav>
+<a class=prev href=/post/%E6%B4%9B%E7%A5%9E%E8%B5%8B/>
+<i class="iconfont icon-left"></i>
+<span class="prev-text nav-default">洛神赋</span>
+<span class="prev-text nav-mobile">上一篇</span>
+</a>
+</nav>
+</footer>
+</article>
 </div>
 </div>
 </main>
@@ -144,6 +205,9 @@
 <script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script>
 <script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script>
 <script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin=anonymous></script>
+<script>var languageCode="en".replace(/-/g,'_').replace(/_(.*)/,function(b,a){return b.replace(a,a.toUpperCase())});timeago().render(document.querySelectorAll('.timeago'),languageCode),timeago.cancel()</script>
 <script type=text/javascript src=/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js></script>
 <script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga('create','UA-114666602-1','auto'),ga('set','anonymizeIp',!0),ga('send','pageview'))</script>
 <script async src=https://www.google-analytics.com/analytics.js></script>
