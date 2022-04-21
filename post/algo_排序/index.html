@@ -27,11 +27,11 @@
 <meta property="og:type" content="article">
 <meta property="og:url" content="http://wxjer.github.io/post/algo_%E6%8E%92%E5%BA%8F/"><meta property="article:section" content="post">
 <meta property="article:published_time" content="2021-11-18T23:44:01+08:00">
-<meta property="article:modified_time" content="2022-04-21T18:38:27+08:00">
+<meta property="article:modified_time" content="2022-04-22T00:03:42+08:00">
 <meta itemprop=name content="排序算法继续">
 <meta itemprop=description content="第亿此重启学习算法"><meta itemprop=datePublished content="2021-11-18T23:44:01+08:00">
-<meta itemprop=dateModified content="2022-04-21T18:38:27+08:00">
-<meta itemprop=wordCount content="2042">
+<meta itemprop=dateModified content="2022-04-22T00:03:42+08:00">
+<meta itemprop=wordCount content="2957">
 <meta itemprop=keywords content="算法,排序,递归,桶排序,堆,堆排序,快排,归并排序,基数排序,"><meta name=twitter:card content="summary">
 <meta name=twitter:title content="排序算法继续">
 <meta name=twitter:description content="第亿此重启学习算法"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
@@ -96,8 +96,8 @@
 <a href=/categories/%E5%AD%A6%E6%97%A0%E6%AD%A2%E5%A2%83/> 学无止境 </a>
 <a href=/categories/%E7%AE%97%E6%B3%95%E5%BE%97%E5%AD%A6/> 算法得学 </a>
 </div>
-<span class=more-meta> 约 2042 字 </span>
-<span class=more-meta> 预计阅读 5 分钟 </span>
+<span class=more-meta> 约 2957 字 </span>
+<span class=more-meta> 预计阅读 6 分钟 </span>
 </div>
 </header>
 <div class=post-toc id=post-toc>
@@ -107,9 +107,58 @@
 <ul>
 <li><a href=#常见排序算法>常见排序算法</a>
 <ul>
-<li><a href=#test>test</a>
+<li><a href=#选择排序>选择排序：</a></li>
+<li><a href=#冒泡排序>冒泡排序</a></li>
+<li><a href=#插入排序>插入排序</a></li>
+<li><a href=#二分搜索>二分搜索</a>
+<ul>
+<li><a href=#1在一个有序数组中找某个数是否存在>1.在一个有序数组中，找某个数是否存在</a></li>
+<li><a href=#2在一个有序数组中找某个数最左侧的位置>2.在一个有序数组中，找>=某个数最左侧的位置</a></li>
+<li><a href=#3局部最小值>3.局部最小值</a></li>
+<li><a href=#总结>总结</a></li>
+</ul>
+</li>
+<li><a href=#归并排序>归并排序</a>
+<ul>
+<li><a href=#master公式>master公式</a></li>
+<li><a href=#实质>实质</a></li>
+<li><a href=#扩展>扩展</a></li>
+<li><a href=#逆序对问题>逆序对问题</a></li>
+</ul>
+</li>
+<li><a href=#快排>快排</a>
+<ul>
+<li><a href=#荷兰国旗>荷兰国旗</a></li>
+<li><a href=#快排10-n2>快排1.0 n^2</a></li>
+<li><a href=#快排20>快排2.0</a></li>
+<li><a href=#快排30>快排3.0</a></li>
+<li><a href=#空间复杂度>空间复杂度</a></li>
+</ul>
+</li>
+<li><a href=#堆>堆</a>
+<ul>
+<li><a href=#大根堆>大根堆</a></li>
+<li><a href=#小根堆>小根堆</a></li>
+<li><a href=#构建大根堆>构建大根堆</a></li>
+<li><a href=#大根堆最大值>大根堆最大值</a></li>
+<li><a href=#heapify>Heapify</a></li>
+<li><a href=#某个位置去掉并保持堆结构>某个位置去掉并保持堆结构</a></li>
+<li><a href=#时间复杂度>时间复杂度</a></li>
+<li><a href=#空间复杂度-1>空间复杂度</a></li>
+</ul>
+</li>
+<li><a href=#堆排序>堆排序</a>
 <ul>
 <li></li>
+<li><a href=#时间复杂度-1>时间复杂度</a></li>
+<li><a href=#优化>优化</a></li>
+<li><a href=#扩展题目>扩展题目</a></li>
+<li><a href=#比较器>比较器</a></li>
+</ul>
+</li>
+<li><a href=#桶排序>桶排序</a>
+<ul>
+<li><a href=#基数排序>基数排序</a></li>
 <li><a href=#稳定性>稳定性</a></li>
 </ul>
 </li>
@@ -122,9 +171,8 @@
 <div class=post-content>
 <p>这节课我们来学习一些排序算法</p>
 <h1 id=常见排序算法>常见排序算法</h1>
-<h2 id=test>test</h2>
-<h4 id=选择排序>选择排序：</h4>
-<p>选择排序、冒泡排序
+<h2 id=选择排序>选择排序：</h2>
+<p>选择排序
 时间复杂度O(N^2)，额外空间复杂度O(1)</p>
 <div class=highlight><div class=chroma>
 <table class=lntable><tr><td class=lntd>
@@ -159,7 +207,7 @@
 </div><p><img src=http://img.5bug.cn/image-20211118223856264.webp alt=image-20211118223856264></p>
 <p>操作次数：</p>
 <p><img src=http://img.5bug.cn/image-20211118224945776.webp alt=image-20211118224945776></p>
-<h4 id=冒泡排序>冒泡排序</h4>
+<h2 id=冒泡排序>冒泡排序</h2>
 <div class=highlight><div class=chroma>
 <table class=lntable><tr><td class=lntd>
 <pre tabindex=0 class=chroma><code><span class=lnt> 1
@@ -191,7 +239,7 @@
 </code></pre></td></tr></table>
 </div>
 </div><p><img src=http://img.5bug.cn/image-20211118230002969.webp alt=image-20211118230002969></p>
-<h4 id=插入排序>插入排序</h4>
+<h2 id=插入排序>插入排序</h2>
 <p>时间复杂度O(N^2)，额外空间复杂度O(1)
 算法流程按照最差情况来估计时间复杂度</p>
 <div class=highlight><div class=chroma>
@@ -220,12 +268,9 @@
 <span class=o>}</span>
 </code></pre></td></tr></table>
 </div>
-</div><h4 id=二分搜索>二分搜索</h4>
-<p>二分法的详解与扩展
-1)在一个有序数组中，找某个数是否存在
-2)在一个有序数组中，找>=某个数最左侧的位置
-3)局部最小值问题</p>
-<h5 id=1>1）</h5>
+</div><h2 id=二分搜索>二分搜索</h2>
+<p>二分法的详解与扩展</p>
+<h3 id=1在一个有序数组中找某个数是否存在>1.在一个有序数组中，找某个数是否存在</h3>
 <div class=highlight><div class=chroma>
 <table class=lntable><tr><td class=lntd>
 <pre tabindex=0 class=chroma><code><span class=lnt> 1
@@ -270,7 +315,7 @@
 <span class=o>}</span>
 </code></pre></td></tr></table>
 </div>
-</div><h5 id=2>2）</h5>
+</div><h3 id=2在一个有序数组中找某个数最左侧的位置>2.在一个有序数组中，找>=某个数最左侧的位置</h3>
 <p><img src=http://img.5bug.cn/image-20211122212706298.webp alt=image-20211122212706298></p>
 <div class=highlight><div class=chroma>
 <table class=lntable><tr><td class=lntd>
@@ -310,11 +355,11 @@
 <span class=o>}</span>
 </code></pre></td></tr></table>
 </div>
-</div><h5 id=3局部最小值>3）局部最小值</h5>
+</div><h3 id=3局部最小值>3.局部最小值</h3>
 <p><img src=http://img.5bug.cn/image-20211122213344986.webp alt=image-20211122213344986></p>
-<h5 id=总结>总结</h5>
+<h3 id=总结>总结</h3>
 <p>二分不一定用在有序数组里，在某些可以确定去掉另一半数据的情况下也可以使用</p>
-<h4 id=归并排序>归并排序</h4>
+<h2 id=归并排序>归并排序</h2>
 <ol>
 <li>整体就是一个简单递归，左边排好序、右边排好序、让其整体有序</li>
 <li>让其整体有序的过程里用了排外序方法</li>
@@ -399,11 +444,11 @@
 </code></pre></td></tr></table>
 </div>
 </div><p><img src=http://img.5bug.cn/image-20211122222431739.webp alt=image-20211122222431739></p>
-<h5 id=master公式>master公式</h5>
+<h3 id=master公式>master公式</h3>
 <p><img src=http://img.5bug.cn/image-20211122222637310.webp alt=image-20211122222637310></p>
-<h5 id=实质>实质</h5>
+<h3 id=实质>实质</h3>
 <p>没有浪费每次小排序的结果，最后合并在一起，而选择排序，冒泡等n^2的浪费了每次比较结果</p>
-<h5 id=扩展>扩展</h5>
+<h3 id=扩展>扩展</h3>
 <p>小和问题和逆序对问题<br>
 小和问题 在一个数组中，每一个数左边比当前数小的数累加起来，叫做这个数组 的小和。求一个数组 的小和。<br>
 例子:[1,3,4,2,5] 1左边比1小的数，没有; 3左边比3小的数，1; 4左 边比4小的数，1、3; 2左边比2小的数，1; 5左边比5小的数，1、3、4、 2; 所以小和为1+1+3+1+1+3+4+2=16</p>
@@ -492,57 +537,227 @@
 <span class=o>}</span>
 </code></pre></td></tr></table>
 </div>
-</div><h5 id=逆序对问题>逆序对问题</h5>
+</div><h3 id=逆序对问题>逆序对问题</h3>
 <p>同理</p>
-<h4 id=快排>快排</h4>
-<h5 id=荷兰国旗>荷兰国旗</h5>
-<p><img src=http://img.5bug.cn/image-20211122225646389.webp alt=image-20211122225646389></p>
+<h2 id=快排>快排</h2>
+<h3 id=荷兰国旗>荷兰国旗</h3>
+<p>问题一</p>
+<p>给定一个数组arr，和一个数num，请把小于等于num的数放在数 组的左边，大于num的 数放在数组的右边。要求额外空间复杂度O(1)，时间复杂度O(N)</p>
+<blockquote>
+<p>1.把数组范围中的最后一个数作为划分值，然后把数组通过荷兰国旗问题分成三个部 分: 左侧&lt;划分值、中间=划分值、右侧>划分值<br>
+2.对左侧范围和右侧范围，递归执行</p>
+</blockquote>
+<p>分析</p>
+<ol>
+<li>划分值越靠近两侧，复杂度越高;划分值越靠近中间，复杂度越低</li>
+<li>可以轻而易举的举出最差的例子，所以不改进的快速排序时间复杂度为O(N^2)</li>
+</ol>
+<p>问题二(荷兰国旗问题)<br>
+给定一个数组arr，和一个数num，请把小于num的数放在数组的 左边，等于num的数放 在数组的中间，大于num的数放在数组的 右边。要求额外空间复杂度O(1)，时间复杂度 O(N)</p>
 <p><img src=http://img.5bug.cn/image-20211122225834119.webp alt=image-20211122225834119></p>
 <p><img src=http://img.5bug.cn/image-20211122225925272.webp alt=image-20211122225925272></p>
 <p><img src=http://img.5bug.cn/image-20211122230308259.webp alt=image-20211122230308259></p>
-<h4 id=快排10-n2>快排1.0 n^2</h4>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=kd>public</span> <span class=kd>static</span> <span class=kt>int</span><span class=o>[]</span> <span class=nf>partition</span><span class=o>(</span><span class=kt>int</span><span class=o>[]</span> <span class=n>arr</span><span class=o>,</span> <span class=kt>int</span> <span class=n>l</span><span class=o>,</span> <span class=kt>int</span> <span class=n>r</span><span class=o>,</span> <span class=kt>int</span> <span class=n>p</span><span class=o>)</span> <span class=o>{</span>  
+   <span class=kt>int</span> <span class=n>less</span> <span class=o>=</span> <span class=n>l</span> <span class=o>-</span> <span class=n>1</span><span class=o>;</span>  
+   <span class=kt>int</span> <span class=n>more</span> <span class=o>=</span> <span class=n>r</span> <span class=o>+</span> <span class=n>1</span><span class=o>;</span>  
+   <span class=k>while</span> <span class=o>(</span><span class=n>l</span> <span class=o>&lt;</span> <span class=n>more</span><span class=o>)</span> <span class=o>{</span>  
+      <span class=k>if</span> <span class=o>(</span><span class=n>arr</span><span class=o>[</span><span class=n>l</span><span class=o>]</span> <span class=o>&lt;</span> <span class=n>p</span><span class=o>)</span> <span class=o>{</span>  
+         <span class=n>swap</span><span class=o>(</span><span class=n>arr</span><span class=o>,</span> <span class=o>++</span><span class=n>less</span><span class=o>,</span> <span class=n>l</span><span class=o>++);</span>  
+      <span class=o>}</span> <span class=k>else</span> <span class=k>if</span> <span class=o>(</span><span class=n>arr</span><span class=o>[</span><span class=n>l</span><span class=o>]</span> <span class=o>&gt;</span> <span class=n>p</span><span class=o>)</span> <span class=o>{</span>  
+         <span class=n>swap</span><span class=o>(</span><span class=n>arr</span><span class=o>,</span> <span class=o>--</span><span class=n>more</span><span class=o>,</span> <span class=n>l</span><span class=o>);</span>  
+      <span class=o>}</span> <span class=k>else</span> <span class=o>{</span>  
+         <span class=n>l</span><span class=o>++;</span>  
+      <span class=o>}</span>  
+   <span class=o>}</span>  
+   <span class=k>return</span> <span class=k>new</span> <span class=kt>int</span><span class=o>[]</span> <span class=o>{</span> <span class=n>less</span> <span class=o>+</span> <span class=n>1</span><span class=o>,</span> <span class=n>more</span> <span class=o>-</span> <span class=n>1</span> <span class=o>};</span>  
+<span class=o>}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id=快排10-n2>快排1.0 n^2</h3>
 <p><img src=http://img.5bug.cn/image-20211122230732031.webp alt=image-20211122230732031></p>
-<h4 id=快排20>快排2.0</h4>
-<p>荷兰国旗方法，因为搞定了一批==5的数 所以快一些 n^2</p>
+<h3 id=快排20>快排2.0</h3>
+<p>荷兰国旗方法，因为搞定了一批=5的数 所以快一些 n^2</p>
 <p><img src=http://img.5bug.cn/image-20211122230945780.webp alt=image-20211122230945780></p>
-<h4 id=快排30>快排3.0</h4>
-<p>随机选一个数作为比较数，通过随机概率上计算复杂度为 nlogn</p>
-<p><img src=http://img.5bug.cn/image-20211122231850178.webp alt=image-20211122231850178></p>
-<h4 id=空间复杂度>空间复杂度</h4>
+<h3 id=快排30>快排3.0</h3>
+<p>随机快速排序(改进的快速排序)</p>
+<p>1)在数组范围中，等概率随机选一个数作为划分值，然后把数组通过荷兰国旗问题分 成三个部分:<br>
+左侧&lt;划分值、中间=划分值、右侧>划分值<br>
+2)对左侧范围和右侧范围，递归执行</p>
+<p>3)时间复杂度为O(N*logN)</p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=kd>public</span> <span class=kd>static</span> <span class=kt>void</span> <span class=nf>quickSort</span><span class=o>(</span><span class=kt>int</span><span class=o>[]</span> <span class=n>arr</span><span class=o>)</span> <span class=o>{</span>  
+   <span class=k>if</span> <span class=o>(</span><span class=n>arr</span> <span class=o>==</span> <span class=kc>null</span> <span class=o>||</span> <span class=n>arr</span><span class=o>.</span><span class=na>length</span> <span class=o>&lt;</span> <span class=n>2</span><span class=o>)</span> <span class=o>{</span>  
+      <span class=k>return</span><span class=o>;</span>  
+   <span class=o>}</span>  
+   <span class=n>quickSort</span><span class=o>(</span><span class=n>arr</span><span class=o>,</span> <span class=n>0</span><span class=o>,</span> <span class=n>arr</span><span class=o>.</span><span class=na>length</span> <span class=o>-</span> <span class=n>1</span><span class=o>);</span>  
+<span class=o>}</span>  
+  
+<span class=kd>public</span> <span class=kd>static</span> <span class=kt>void</span> <span class=nf>quickSort</span><span class=o>(</span><span class=kt>int</span><span class=o>[]</span> <span class=n>arr</span><span class=o>,</span> <span class=kt>int</span> <span class=n>l</span><span class=o>,</span> <span class=kt>int</span> <span class=n>r</span><span class=o>)</span> <span class=o>{</span>  
+   <span class=k>if</span> <span class=o>(</span><span class=n>l</span> <span class=o>&lt;</span> <span class=n>r</span><span class=o>)</span> <span class=o>{</span>  
+      <span class=n>swap</span><span class=o>(</span><span class=n>arr</span><span class=o>,</span> <span class=n>l</span> <span class=o>+</span> <span class=o>(</span><span class=kt>int</span><span class=o>)</span> <span class=o>(</span><span class=n>Math</span><span class=o>.</span><span class=na>random</span><span class=o>()</span> <span class=o>*</span> <span class=o>(</span><span class=n>r</span> <span class=o>-</span> <span class=n>l</span> <span class=o>+</span> <span class=n>1</span><span class=o>)),</span> <span class=n>r</span><span class=o>);</span>  
+      <span class=kt>int</span><span class=o>[]</span> <span class=n>p</span> <span class=o>=</span> <span class=n>partition</span><span class=o>(</span><span class=n>arr</span><span class=o>,</span> <span class=n>l</span><span class=o>,</span> <span class=n>r</span><span class=o>);</span>  
+      <span class=n>quickSort</span><span class=o>(</span><span class=n>arr</span><span class=o>,</span> <span class=n>l</span><span class=o>,</span> <span class=n>p</span><span class=o>[</span><span class=n>0</span><span class=o>]</span> <span class=o>-</span> <span class=n>1</span><span class=o>);</span>  
+      <span class=n>quickSort</span><span class=o>(</span><span class=n>arr</span><span class=o>,</span> <span class=n>p</span><span class=o>[</span><span class=n>1</span><span class=o>]</span> <span class=o>+</span> <span class=n>1</span><span class=o>,</span> <span class=n>r</span><span class=o>);</span>  
+   <span class=o>}</span>  
+<span class=o>}</span>  
+  
+<span class=kd>public</span> <span class=kd>static</span> <span class=kt>int</span><span class=o>[]</span> <span class=nf>partition</span><span class=o>(</span><span class=kt>int</span><span class=o>[]</span> <span class=n>arr</span><span class=o>,</span> <span class=kt>int</span> <span class=n>l</span><span class=o>,</span> <span class=kt>int</span> <span class=n>r</span><span class=o>)</span> <span class=o>{</span>  
+   <span class=kt>int</span> <span class=n>less</span> <span class=o>=</span> <span class=n>l</span> <span class=o>-</span> <span class=n>1</span><span class=o>;</span>  
+   <span class=kt>int</span> <span class=n>more</span> <span class=o>=</span> <span class=n>r</span><span class=o>;</span>  
+   <span class=k>while</span> <span class=o>(</span><span class=n>l</span> <span class=o>&lt;</span> <span class=n>more</span><span class=o>)</span> <span class=o>{</span>  
+      <span class=k>if</span> <span class=o>(</span><span class=n>arr</span><span class=o>[</span><span class=n>l</span><span class=o>]</span> <span class=o>&lt;</span> <span class=n>arr</span><span class=o>[</span><span class=n>r</span><span class=o>])</span> <span class=o>{</span>  
+         <span class=n>swap</span><span class=o>(</span><span class=n>arr</span><span class=o>,</span> <span class=o>++</span><span class=n>less</span><span class=o>,</span> <span class=n>l</span><span class=o>++);</span>  
+      <span class=o>}</span> <span class=k>else</span> <span class=k>if</span> <span class=o>(</span><span class=n>arr</span><span class=o>[</span><span class=n>l</span><span class=o>]</span> <span class=o>&gt;</span> <span class=n>arr</span><span class=o>[</span><span class=n>r</span><span class=o>])</span> <span class=o>{</span>  
+         <span class=n>swap</span><span class=o>(</span><span class=n>arr</span><span class=o>,</span> <span class=o>--</span><span class=n>more</span><span class=o>,</span> <span class=n>l</span><span class=o>);</span>  
+      <span class=o>}</span> <span class=k>else</span> <span class=o>{</span>  
+         <span class=n>l</span><span class=o>++;</span>  
+      <span class=o>}</span>  
+   <span class=o>}</span>  
+   <span class=n>swap</span><span class=o>(</span><span class=n>arr</span><span class=o>,</span> <span class=n>more</span><span class=o>,</span> <span class=n>r</span><span class=o>);</span>  
+   <span class=k>return</span> <span class=k>new</span> <span class=kt>int</span><span class=o>[]</span> <span class=o>{</span> <span class=n>less</span> <span class=o>+</span> <span class=n>1</span><span class=o>,</span> <span class=n>more</span> <span class=o>};</span>  
+<span class=o>}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id=空间复杂度>空间复杂度</h3>
 <p>最差的情况O(n) 开n个数组， 最优logn，形式为树， 树的子节点可以在递归回退的时候销毁，节省空间</p>
-<h4 id=堆>堆</h4>
+<h2 id=堆>堆</h2>
 <p>是一种特殊完全二叉树</p>
-<p>左节点：2*i+1</p>
-<p>右节点 2*1 +2</p>
-<p>父节点：（i-1)/2</p>
-<p><img src=http://img.5bug.cn/image-20211123224832456.webp alt=image-20211123224832456></p>
+<ol>
+<li>堆结构就是用数组实现的完全二叉树结构</li>
+<li>完全二叉树中如果每棵子树的最大值都在顶部就是大根堆</li>
+<li>完全二叉树中如果每棵子树的最小值都在顶部就是小根堆</li>
+<li>堆结构的heapInsert与heapify操作</li>
+<li>堆结构的增大和减少</li>
+<li>优先级队列结构，就是堆结构</li>
+</ol>
+<p>将堆用一个连续的数组的来表示，如下图，则
+i位置的左节点：2*i+1，右节点 2*1 +2，父节点（i-1)/2</p>
 <p><img src=http://img.5bug.cn/image-20211123220927700.webp alt=image-20211123220927700></p>
-<h5 id=大根堆>大根堆</h5>
-<p>在这个二叉树，每个子树最大值都是根</p>
-<p><img src=http://img.5bug.cn/image-20211123221004334.webp alt=image-20211123221004334></p>
-<h5 id=小根堆>小根堆</h5>
+<h3 id=大根堆>大根堆</h3>
+<p>在这个二叉树，每个子树最大值都是根
+<img src=http://img.5bug.cn/image-20211123221004334.webp alt=image-20211123221004334></p>
+<h3 id=小根堆>小根堆</h3>
 <p>同理</p>
-<h5 id=构建大根堆>构建大根堆</h5>
-<p>每添加一个节点，跟自己的父节点比较</p>
+<h3 id=构建大根堆>构建大根堆</h3>
+<p>每添加一个节点，跟自己的父节点（i-1）/2比较 ,如果比根节点大，则在数组中互换位置</p>
 <p><img src=http://img.5bug.cn/image-20211123221241976.webp alt=image-20211123221241976></p>
 <p><img src=http://img.5bug.cn/image-20211123221259847.webp alt=image-20211123221259847></p>
-<h5 id=heapinsert代码>heapInsert代码</h5>
-<p><img src=http://img.5bug.cn/image-20211123222044367.webp alt=image-20211123222044367></p>
-<h5 id=大根堆最大值>大根堆最大值</h5>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=kd>public</span> <span class=kd>static</span> <span class=kt>void</span> <span class=nf>heapInsert</span><span class=o>(</span><span class=kt>int</span><span class=o>[]</span> <span class=n>arr</span><span class=o>,</span> <span class=kt>int</span> <span class=n>index</span><span class=o>)</span> <span class=o>{</span>  
+   <span class=k>while</span> <span class=o>(</span><span class=n>arr</span><span class=o>[</span><span class=n>index</span><span class=o>]</span> <span class=o>&gt;</span> <span class=n>arr</span><span class=o>[(</span><span class=n>index</span> <span class=o>-</span> <span class=n>1</span><span class=o>)</span> <span class=o>/</span> <span class=n>2</span><span class=o>])</span> <span class=o>{</span>  
+      <span class=n>swap</span><span class=o>(</span><span class=n>arr</span><span class=o>,</span> <span class=n>index</span><span class=o>,</span> <span class=o>(</span><span class=n>index</span> <span class=o>-</span> <span class=n>1</span><span class=o>)</span> <span class=o>/</span><span class=n>2</span><span class=o>);</span>  
+      <span class=n>index</span> <span class=o>=</span> <span class=o>(</span><span class=n>index</span> <span class=o>-</span> <span class=n>1</span><span class=o>)/</span><span class=n>2</span> <span class=o>;</span>  
+   <span class=o>}</span>  
+<span class=o>}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id=大根堆最大值>大根堆最大值</h3>
 <p>index = 0</p>
-<h5 id=heapify>Heapify</h5>
+<h3 id=heapify>Heapify</h3>
 <p>去掉大根堆最大值并保持大根堆（Heapify）</p>
-<p><img src=http://img.5bug.cn/image-20211123222057624.webp alt=image-20211123222057624></p>
-<h5 id=某个位置去掉并保持堆结构>某个位置去掉并保持堆结构</h5>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=kd>public</span> <span class=kd>static</span> <span class=kt>void</span> <span class=nf>heapify</span><span class=o>(</span><span class=kt>int</span><span class=o>[]</span> <span class=n>arr</span><span class=o>,</span> <span class=kt>int</span> <span class=n>index</span><span class=o>,</span> <span class=kt>int</span> <span class=n>size</span><span class=o>)</span> <span class=o>{</span>  
+   <span class=kt>int</span> <span class=n>left</span> <span class=o>=</span> <span class=n>index</span> <span class=o>*</span> <span class=n>2</span> <span class=o>+</span> <span class=n>1</span><span class=o>;</span>  
+   <span class=k>while</span> <span class=o>(</span><span class=n>left</span> <span class=o>&lt;</span> <span class=n>size</span><span class=o>)</span> <span class=o>{</span>  
+      <span class=kt>int</span> <span class=n>largest</span> <span class=o>=</span> <span class=n>left</span> <span class=o>+</span> <span class=n>1</span> <span class=o>&lt;</span> <span class=n>size</span> <span class=o>&amp;&amp;</span> <span class=n>arr</span><span class=o>[</span><span class=n>left</span> <span class=o>+</span> <span class=n>1</span><span class=o>]</span> <span class=o>&gt;</span> <span class=n>arr</span><span class=o>[</span><span class=n>left</span><span class=o>]</span> <span class=o>?</span> <span class=n>left</span> <span class=o>+</span> <span class=n>1</span> <span class=o>:</span> <span class=n>left</span><span class=o>;</span>  
+      <span class=n>largest</span> <span class=o>=</span> <span class=n>arr</span><span class=o>[</span><span class=n>largest</span><span class=o>]</span> <span class=o>&gt;</span> <span class=n>arr</span><span class=o>[</span><span class=n>index</span><span class=o>]</span> <span class=o>?</span> <span class=n>largest</span> <span class=o>:</span> <span class=n>index</span><span class=o>;</span>  
+      <span class=k>if</span> <span class=o>(</span><span class=n>largest</span> <span class=o>==</span> <span class=n>index</span><span class=o>)</span> <span class=o>{</span>  
+         <span class=k>break</span><span class=o>;</span>  
+      <span class=o>}</span>  
+      <span class=n>swap</span><span class=o>(</span><span class=n>arr</span><span class=o>,</span> <span class=n>largest</span><span class=o>,</span> <span class=n>index</span><span class=o>);</span>  
+      <span class=n>index</span> <span class=o>=</span> <span class=n>largest</span><span class=o>;</span>  
+      <span class=n>left</span> <span class=o>=</span> <span class=n>index</span> <span class=o>*</span> <span class=n>2</span> <span class=o>+</span> <span class=n>1</span><span class=o>;</span>  
+   <span class=o>}</span>  
+<span class=o>}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id=某个位置去掉并保持堆结构>某个位置去掉并保持堆结构</h3>
 <ul>
 <li>如果这个数比之前数大，向上heapinsert</li>
 <li>如果小，向下heapify</li>
 </ul>
-<h5 id=时间复杂度>时间复杂度</h5>
+<h3 id=时间复杂度>时间复杂度</h3>
 <p>logn</p>
-<h5 id=空间复杂度-1>空间复杂度</h5>
+<h3 id=空间复杂度-1>空间复杂度</h3>
 <p>1</p>
-<h4 id=堆排序>堆排序</h4>
+<h2 id=堆排序>堆排序</h2>
 <ol>
 <li>先将数组改成堆 heapinsert</li>
 <li>将0位置上的数（最大值）跟最后一个数做交换，然后heapsize&ndash;</li>
@@ -551,17 +766,17 @@
 </ol>
 <h5 id=代码>代码</h5>
 <p><img src=http://img.5bug.cn/image-20211123223221269.webp alt=image-20211123223221269></p>
-<h5 id=时间复杂度-1>时间复杂度</h5>
+<h3 id=时间复杂度-1>时间复杂度</h3>
 <p>Nlogn</p>
-<h5 id=优化>优化</h5>
+<h3 id=优化>优化</h3>
 <p>构建堆的时候从底层节点开始向上heapify 复杂度为n，而用heapinsert为logn 所以快了一点</p>
 <p><img src=http://img.5bug.cn/image-20211123224323311.webp alt=image-20211123224323311></p>
 <p><img src=http://img.5bug.cn/image-20211123224406470.webp alt=image-20211123224406470></p>
 <p><img src=http://img.5bug.cn/image-20211123224611430.webp alt=image-20211123224611430></p>
 <p>但蓝色区域未经优化，还是nlogn，所以整体复杂度还是nlogn</p>
-<h5 id=扩展题目>扩展题目</h5>
+<h3 id=扩展题目>扩展题目</h3>
 <p><img src=http://img.5bug.cn/image-20211123224901672.webp alt=image-20211123224901672></p>
-<h6 id=代码-1>代码</h6>
+<h4 id=代码-1>代码</h4>
 <p>优先级队列底层小根堆</p>
 <ul>
 <li>
@@ -573,13 +788,13 @@
 </li>
 </ul>
 <p><img src=http://img.5bug.cn/image-20211123225740184.webp alt=image-20211123225740184></p>
-<h5 id=比较器>比较器</h5>
+<h3 id=比较器>比较器</h3>
 <p><img src=http://img.5bug.cn/image-20211123230352510.webp alt=image-20211123230352510></p>
 <p>构建小根堆的时候传入一个比较器</p>
 <p><img src=http://img.5bug.cn/image-20211123230338328.webp alt=image-20211123230338328></p>
-<h4 id=桶排序>桶排序</h4>
+<h2 id=桶排序>桶排序</h2>
 <p>基于比较数据情况（大小范围）定制</p>
-<h5 id=基数排序>基数排序</h5>
+<h3 id=基数排序>基数排序</h3>
 <p>仍然需要根据数据情况定制（根据进制桶）</p>
 <ol>
 <li>
@@ -619,7 +834,7 @@
 <p class=copyright-item>
 <span class=item-title>上次更新</span>
 <span class=item-content>
-2022-04-21
+2022-04-22
 </span>
 </p>
 </div>
