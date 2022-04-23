@@ -1,494 +1,113 @@
-<!doctype html><html lang=zh-cn>
-<head>
-<meta charset=utf-8>
-<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
-<title>简明SpringBoot小RESTful API - SIRIUS</title>
-<meta name=renderer content="webkit">
-<meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
-<meta http-equiv=cache-control content="no-transform">
-<meta http-equiv=cache-control content="no-siteapp">
-<meta name=theme-color content="#f8f5ec">
-<meta name=msapplication-navbutton-color content="#f8f5ec">
-<meta name=apple-mobile-web-app-capable content="yes">
-<meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec">
-<meta name=author content="Dabu6aiksg"><meta name=description content="学点Springboot"><meta name=keywords content="SIRIUS,blog,android,kotlin">
-<meta name=generator content="Hugo 0.87.0 with theme even">
-<link rel=canonical href=http://wxjer.github.io/post/restful_api/>
-<link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
-<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
-<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
-<link rel=manifest href=/manifest.json>
-<link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5>
-<script async src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script>
-<link href=/sass/main.min.2683f8f2f8d1aac5100af7ef4afec1af3f00d1ec59fc455760aec62f0228ccd2.css rel=stylesheet>
-<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous>
-<meta property="og:title" content="简明SpringBoot小RESTful API">
-<meta property="og:description" content="学点Springboot">
-<meta property="og:type" content="article">
-<meta property="og:url" content="http://wxjer.github.io/post/restful_api/"><meta property="article:section" content="post">
-<meta property="article:published_time" content="2021-11-17T23:47:01+08:00">
-<meta property="article:modified_time" content="2021-11-23T14:35:51+08:00">
-<meta itemprop=name content="简明SpringBoot小RESTful API">
-<meta itemprop=description content="学点Springboot"><meta itemprop=datePublished content="2021-11-17T23:47:01+08:00">
-<meta itemprop=dateModified content="2021-11-23T14:35:51+08:00">
-<meta itemprop=wordCount content="1313">
-<meta itemprop=keywords content="SpringBoot,"><meta name=twitter:card content="summary">
-<meta name=twitter:title content="简明SpringBoot小RESTful API">
-<meta name=twitter:description content="学点Springboot"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
-<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
-</head>
-<body>
-<div id=mobile-navbar class=mobile-navbar>
-<div class=mobile-header-logo>
-<a href=/ class=logo>SIRIUS</a>
-</div>
-<div class=mobile-navbar-icon>
-<span></span>
-<span></span>
-<span></span>
-</div>
-</div>
-<nav id=mobile-menu class="mobile-menu slideout-menu">
-<ul class=mobile-menu-list>
-<a href=/>
-<li class=mobile-menu-item>主页</li>
-</a><a href=/post/>
-<li class=mobile-menu-item>归档</li>
-</a><a href=/tags/>
-<li class=mobile-menu-item>标签</li>
-</a><a href=/categories/>
-<li class=mobile-menu-item>类别</li>
-</a><a href=/about/>
-<li class=mobile-menu-item>关于</li>
-</a>
-</ul>
-</nav>
-<div class=container id=mobile-panel>
-<header id=header class=header>
-<div class=logo-wrapper>
-<a href=/ class=logo>SIRIUS</a>
-</div>
-<nav class=site-navbar>
-<ul id=menu class=menu>
-<li class=menu-item>
-<a class=menu-item-link href=/>主页</a>
-</li><li class=menu-item>
-<a class=menu-item-link href=/post/>归档</a>
-</li><li class=menu-item>
-<a class=menu-item-link href=/tags/>标签</a>
-</li><li class=menu-item>
-<a class=menu-item-link href=/categories/>类别</a>
-</li><li class=menu-item>
-<a class=menu-item-link href=/about/>关于</a>
-</li>
-</ul>
-</nav>
-</header>
-<main id=main class=main>
-<div class=content-wrapper>
-<div id=content class=content>
-<article class=post>
-<header class=post-header>
-<h1 class=post-title>简明SpringBoot小RESTful API</h1>
-<div class=post-meta>
-<span class=post-time> 2021-11-17 </span>
-<div class=post-category>
-<a href=/categories/%E5%AD%A6%E6%97%A0%E6%AD%A2%E5%A2%83/> 学无止境 </a>
-</div>
-<span class=more-meta> 约 1313 字 </span>
-<span class=more-meta> 预计阅读 3 分钟 </span>
-</div>
-</header>
-<div class=post-toc id=post-toc>
-<h2 class=post-toc-title>文章目录</h2>
-<div class="post-toc-content always-active">
-<nav id=TableOfContents>
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li></li>
-<li><a href=#定义user实体>定义User实体</a></li>
-<li><a href=#实现对user对象的操作接口>实现对User对象的操作接口</a></li>
-<li><a href=#单元测试>单元测试</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</nav>
-</div>
-</div>
-<div class=post-outdated>
-<div class=hint>
-<p>【注意】最后更新于 <span class=timeago datetime=2021-11-23T14:35:51 title="November 23, 2021">November 23, 2021</span>，文中内容可能已过时，请谨慎使用。</p>
-</div>
-</div>
-<div class=post-content>
-<p>SpringBoot之RESTful API -&lt;<a href=https://blog.didispace.com/spring-boot-learning-2x/>翟永超的Springboot的入门教程</a>></p>
-<h4 id=api设计如下>API设计如下：</h4>
-<table>
-<thead>
-<tr>
-<th><strong>请求类型</strong></th>
-<th><strong>URL</strong></th>
-<th><strong>功能说明</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>GET</td>
-<td>/users</td>
-<td>查询用户列表</td>
-</tr>
-<tr>
-<td>POST</td>
-<td>/users</td>
-<td>创建一个用户</td>
-</tr>
-<tr>
-<td>GET</td>
-<td>/users/id</td>
-<td>根据id查询一个用户</td>
-</tr>
-<tr>
-<td>PUT</td>
-<td>/users/id</td>
-<td>根据ID更新一个用户</td>
-</tr>
-<tr>
-<td>DELETE</td>
-<td>/users/id</td>
-<td>根据ID删除一个用户</td>
-</tr>
-</tbody>
-</table>
-<h3 id=定义user实体>定义User实体</h3>
-<div class=highlight><div class=chroma>
-<table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt>1
-</span><span class=lnt>2
-</span><span class=lnt>3
-</span><span class=lnt>4
-</span><span class=lnt>5
-</span><span class=lnt>6
-</span><span class=lnt>7
-</span><span class=lnt>8
-</span></code></pre></td>
-<td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=nd>@Data</span>
-<span class=kd>public</span> <span class=kd>class</span> <span class=nc>User</span> <span class=o>{</span>
-
-    <span class=kd>private</span> <span class=n>Long</span> <span class=n>id</span><span class=o>;</span>
-    <span class=kd>private</span> <span class=n>String</span> <span class=n>name</span><span class=o>;</span>
-    <span class=kd>private</span> <span class=n>Integer</span> <span class=n>age</span><span class=o>;</span>
-
-<span class=o>}</span>
-</code></pre></td></tr></table>
-</div>
-</div><h3 id=实现对user对象的操作接口>实现对User对象的操作接口</h3>
-<div class=highlight><div class=chroma>
-<table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt> 1
-</span><span class=lnt> 2
-</span><span class=lnt> 3
-</span><span class=lnt> 4
-</span><span class=lnt> 5
-</span><span class=lnt> 6
-</span><span class=lnt> 7
-</span><span class=lnt> 8
-</span><span class=lnt> 9
-</span><span class=lnt>10
-</span><span class=lnt>11
-</span><span class=lnt>12
-</span><span class=lnt>13
-</span><span class=lnt>14
-</span><span class=lnt>15
-</span><span class=lnt>16
-</span><span class=lnt>17
-</span><span class=lnt>18
-</span><span class=lnt>19
-</span><span class=lnt>20
-</span><span class=lnt>21
-</span><span class=lnt>22
-</span><span class=lnt>23
-</span><span class=lnt>24
-</span><span class=lnt>25
-</span><span class=lnt>26
-</span><span class=lnt>27
-</span><span class=lnt>28
-</span><span class=lnt>29
-</span><span class=lnt>30
-</span><span class=lnt>31
-</span><span class=lnt>32
-</span><span class=lnt>33
-</span><span class=lnt>34
-</span><span class=lnt>35
-</span><span class=lnt>36
-</span><span class=lnt>37
-</span><span class=lnt>38
-</span><span class=lnt>39
-</span></code></pre></td>
-<td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=nd>@RestController</span>
-<span class=nd>@RequestMapping</span><span class=o>(</span><span class=s>&#34;/users&#34;</span><span class=o>)</span>
-<span class=kd>public</span> <span class=kd>class</span> <span class=nc>UserController</span> <span class=o>{</span>
-    <span class=kd>static</span> <span class=n>Map</span><span class=o>&lt;</span><span class=n>Long</span><span class=o>,</span> <span class=n>User</span><span class=o>&gt;</span> <span class=n>users</span> <span class=o>=</span> <span class=n>Collections</span><span class=o>.</span><span class=na>synchronizedMap</span><span class=o>(</span><span class=k>new</span> <span class=n>HashMap</span><span class=o>&lt;&gt;());</span>
-
-    <span class=nd>@GetMapping</span><span class=o>(</span><span class=s>&#34;/&#34;</span><span class=o>)</span>
-    <span class=kd>public</span> <span class=n>List</span><span class=o>&lt;</span><span class=n>User</span><span class=o>&gt;</span> <span class=nf>getUserList</span><span class=o>(){</span>
-        <span class=n>List</span><span class=o>&lt;</span><span class=n>User</span><span class=o>&gt;</span> <span class=n>r</span> <span class=o>=</span> <span class=k>new</span> <span class=n>ArrayList</span><span class=o>&lt;&gt;(</span><span class=n>users</span><span class=o>.</span><span class=na>values</span><span class=o>());</span>
-        <span class=k>return</span> <span class=n>r</span><span class=o>;</span>
-    <span class=o>}</span>
-
-    <span class=nd>@PostMapping</span><span class=o>(</span><span class=s>&#34;/&#34;</span><span class=o>)</span>
-    <span class=kd>public</span> <span class=n>String</span> <span class=nf>postUser</span><span class=o>(</span><span class=nd>@RequestBody</span> <span class=n>User</span> <span class=n>user</span><span class=o>){</span>
-        <span class=c1>//@RequestBody注解用来绑定通过http请求中application/json类型上传的数据
-</span><span class=c1></span>        <span class=n>users</span><span class=o>.</span><span class=na>put</span><span class=o>(</span><span class=n>user</span><span class=o>.</span><span class=na>getId</span><span class=o>(),</span><span class=n>user</span><span class=o>);</span>
-        <span class=k>return</span> <span class=s>&#34;success&#34;</span><span class=o>;</span>
-    <span class=o>}</span>
-
-    <span class=nd>@GetMapping</span><span class=o>(</span><span class=s>&#34;/{id}&#34;</span><span class=o>)</span>
-    <span class=kd>public</span> <span class=n>User</span> <span class=nf>getUser</span><span class=o>(</span><span class=nd>@PathVariable</span> <span class=n>Long</span> <span class=n>id</span><span class=o>)</span> <span class=o>{</span>
-        <span class=c1>// url中的id可通过@PathVariable绑定到函数的参数中
-</span><span class=c1></span>        <span class=k>return</span> <span class=n>users</span><span class=o>.</span><span class=na>get</span><span class=o>(</span><span class=n>id</span><span class=o>);</span>
-    <span class=o>}</span>
-
-    <span class=nd>@PutMapping</span><span class=o>(</span><span class=s>&#34;/{id}&#34;</span><span class=o>)</span>
-    <span class=kd>public</span> <span class=n>String</span> <span class=nf>putUser</span><span class=o>(</span><span class=nd>@PathVariable</span> <span class=n>Long</span> <span class=n>id</span><span class=o>,</span> <span class=nd>@RequestBody</span> <span class=n>User</span> <span class=n>user</span><span class=o>)</span> <span class=o>{</span>
-        <span class=n>User</span> <span class=n>u</span> <span class=o>=</span> <span class=n>users</span><span class=o>.</span><span class=na>get</span><span class=o>(</span><span class=n>id</span><span class=o>);</span>
-        <span class=n>u</span><span class=o>.</span><span class=na>setName</span><span class=o>(</span><span class=n>user</span><span class=o>.</span><span class=na>getName</span><span class=o>());</span>
-        <span class=n>u</span><span class=o>.</span><span class=na>setAge</span><span class=o>(</span><span class=n>user</span><span class=o>.</span><span class=na>getAge</span><span class=o>());</span>
-        <span class=n>users</span><span class=o>.</span><span class=na>put</span><span class=o>(</span><span class=n>id</span><span class=o>,</span> <span class=n>u</span><span class=o>);</span>
-        <span class=k>return</span> <span class=s>&#34;success&#34;</span><span class=o>;</span>
-    <span class=o>}</span>
-
-    <span class=nd>@DeleteMapping</span><span class=o>(</span><span class=s>&#34;/{id}&#34;</span><span class=o>)</span>
-    <span class=kd>public</span> <span class=n>String</span> <span class=nf>deleteUser</span><span class=o>(</span><span class=nd>@PathVariable</span> <span class=n>Long</span> <span class=n>id</span><span class=o>)</span> <span class=o>{</span>
-        <span class=n>users</span><span class=o>.</span><span class=na>remove</span><span class=o>(</span><span class=n>id</span><span class=o>);</span>
-        <span class=k>return</span> <span class=s>&#34;success&#34;</span><span class=o>;</span>
-    <span class=o>}</span>
-<span class=o>}</span>
-</code></pre></td></tr></table>
-</div>
-</div><h3 id=单元测试>单元测试</h3>
-<p>大佬竟然还提供带注释的单元测试 爱了</p>
-<div class=highlight><div class=chroma>
-<table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt> 1
-</span><span class=lnt> 2
-</span><span class=lnt> 3
-</span><span class=lnt> 4
-</span><span class=lnt> 5
-</span><span class=lnt> 6
-</span><span class=lnt> 7
-</span><span class=lnt> 8
-</span><span class=lnt> 9
-</span><span class=lnt>10
-</span><span class=lnt>11
-</span><span class=lnt>12
-</span><span class=lnt>13
-</span><span class=lnt>14
-</span><span class=lnt>15
-</span><span class=lnt>16
-</span><span class=lnt>17
-</span><span class=lnt>18
-</span><span class=lnt>19
-</span><span class=lnt>20
-</span><span class=lnt>21
-</span><span class=lnt>22
-</span><span class=lnt>23
-</span><span class=lnt>24
-</span><span class=lnt>25
-</span><span class=lnt>26
-</span><span class=lnt>27
-</span><span class=lnt>28
-</span><span class=lnt>29
-</span><span class=lnt>30
-</span><span class=lnt>31
-</span><span class=lnt>32
-</span><span class=lnt>33
-</span><span class=lnt>34
-</span><span class=lnt>35
-</span><span class=lnt>36
-</span><span class=lnt>37
-</span><span class=lnt>38
-</span><span class=lnt>39
-</span><span class=lnt>40
-</span><span class=lnt>41
-</span><span class=lnt>42
-</span><span class=lnt>43
-</span><span class=lnt>44
-</span><span class=lnt>45
-</span><span class=lnt>46
-</span><span class=lnt>47
-</span><span class=lnt>48
-</span><span class=lnt>49
-</span><span class=lnt>50
-</span><span class=lnt>51
-</span><span class=lnt>52
-</span><span class=lnt>53
-</span><span class=lnt>54
-</span><span class=lnt>55
-</span><span class=lnt>56
-</span><span class=lnt>57
-</span><span class=lnt>58
-</span><span class=lnt>59
-</span><span class=lnt>60
-</span><span class=lnt>61
-</span></code></pre></td>
-<td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=nd>@RunWith</span><span class=o>(</span><span class=n>SpringRunner</span><span class=o>.</span><span class=na>class</span><span class=o>)</span>
-<span class=nd>@SpringBootTest</span>
-<span class=kd>public</span> <span class=kd>class</span> <span class=nc>Chapter21ApplicationTests</span> <span class=o>{</span>
-
-    <span class=kd>private</span> <span class=n>MockMvc</span> <span class=n>mvc</span><span class=o>;</span>
-
-    <span class=nd>@Before</span>
-    <span class=kd>public</span> <span class=kt>void</span> <span class=nf>setUp</span><span class=o>()</span> <span class=o>{</span>
-        <span class=n>mvc</span> <span class=o>=</span> <span class=n>MockMvcBuilders</span><span class=o>.</span><span class=na>standaloneSetup</span><span class=o>(</span><span class=k>new</span> <span class=n>UserController</span><span class=o>()).</span><span class=na>build</span><span class=o>();</span>
-    <span class=o>}</span>
-
-    <span class=nd>@Test</span>
-    <span class=kd>public</span> <span class=kt>void</span> <span class=nf>testUserController</span><span class=o>()</span> <span class=kd>throws</span> <span class=n>Exception</span> <span class=o>{</span>
-        <span class=c1>// 测试UserController
-</span><span class=c1></span>        <span class=n>RequestBuilder</span> <span class=n>request</span><span class=o>;</span>
-
-        <span class=c1>// 1、get查一下user列表，应该为空
-</span><span class=c1></span>        <span class=n>request</span> <span class=o>=</span> <span class=n>get</span><span class=o>(</span><span class=s>&#34;/users/&#34;</span><span class=o>);</span>
-        <span class=n>mvc</span><span class=o>.</span><span class=na>perform</span><span class=o>(</span><span class=n>request</span><span class=o>)</span>
-                <span class=o>.</span><span class=na>andExpect</span><span class=o>(</span><span class=n>status</span><span class=o>().</span><span class=na>isOk</span><span class=o>())</span>
-                <span class=o>.</span><span class=na>andExpect</span><span class=o>(</span><span class=n>content</span><span class=o>().</span><span class=na>string</span><span class=o>(</span><span class=n>equalTo</span><span class=o>(</span><span class=s>&#34;[]&#34;</span><span class=o>)));</span>
-
-        <span class=c1>// 2、post提交一个user
-</span><span class=c1></span>        <span class=n>request</span> <span class=o>=</span> <span class=n>post</span><span class=o>(</span><span class=s>&#34;/users/&#34;</span><span class=o>)</span>
-                <span class=o>.</span><span class=na>contentType</span><span class=o>(</span><span class=n>MediaType</span><span class=o>.</span><span class=na>APPLICATION_JSON</span><span class=o>)</span>
-                <span class=o>.</span><span class=na>content</span><span class=o>(</span><span class=s>&#34;{\&#34;id\&#34;:1,\&#34;name\&#34;:\&#34;测试大师\&#34;,\&#34;age\&#34;:20}&#34;</span><span class=o>);</span>
-        <span class=n>mvc</span><span class=o>.</span><span class=na>perform</span><span class=o>(</span><span class=n>request</span><span class=o>)</span>
-                <span class=o>.</span><span class=na>andExpect</span><span class=o>(</span><span class=n>content</span><span class=o>().</span><span class=na>string</span><span class=o>(</span><span class=n>equalTo</span><span class=o>(</span><span class=s>&#34;success&#34;</span><span class=o>)));</span>
-
-        <span class=c1>// 3、get获取user列表，应该有刚才插入的数据
-</span><span class=c1></span>        <span class=n>request</span> <span class=o>=</span> <span class=n>get</span><span class=o>(</span><span class=s>&#34;/users/&#34;</span><span class=o>);</span>
-        <span class=n>mvc</span><span class=o>.</span><span class=na>perform</span><span class=o>(</span><span class=n>request</span><span class=o>)</span>
-                <span class=o>.</span><span class=na>andExpect</span><span class=o>(</span><span class=n>status</span><span class=o>().</span><span class=na>isOk</span><span class=o>())</span>
-                <span class=o>.</span><span class=na>andExpect</span><span class=o>(</span><span class=n>content</span><span class=o>().</span><span class=na>string</span><span class=o>(</span><span class=n>equalTo</span><span class=o>(</span><span class=s>&#34;[{\&#34;id\&#34;:1,\&#34;name\&#34;:\&#34;测试大师\&#34;,\&#34;age\&#34;:20}]&#34;</span><span class=o>)));</span>
-
-        <span class=c1>// 4、put修改id为1的user
-</span><span class=c1></span>        <span class=n>request</span> <span class=o>=</span> <span class=n>put</span><span class=o>(</span><span class=s>&#34;/users/1&#34;</span><span class=o>)</span>
-                <span class=o>.</span><span class=na>contentType</span><span class=o>(</span><span class=n>MediaType</span><span class=o>.</span><span class=na>APPLICATION_JSON</span><span class=o>)</span>
-                <span class=o>.</span><span class=na>content</span><span class=o>(</span><span class=s>&#34;{\&#34;name\&#34;:\&#34;测试终极大师\&#34;,\&#34;age\&#34;:30}&#34;</span><span class=o>);</span>
-        <span class=n>mvc</span><span class=o>.</span><span class=na>perform</span><span class=o>(</span><span class=n>request</span><span class=o>)</span>
-                <span class=o>.</span><span class=na>andExpect</span><span class=o>(</span><span class=n>content</span><span class=o>().</span><span class=na>string</span><span class=o>(</span><span class=n>equalTo</span><span class=o>(</span><span class=s>&#34;success&#34;</span><span class=o>)));</span>
-
-        <span class=c1>// 5、get一个id为1的user
-</span><span class=c1></span>        <span class=n>request</span> <span class=o>=</span> <span class=n>get</span><span class=o>(</span><span class=s>&#34;/users/1&#34;</span><span class=o>);</span>
-        <span class=n>mvc</span><span class=o>.</span><span class=na>perform</span><span class=o>(</span><span class=n>request</span><span class=o>)</span>
-                <span class=o>.</span><span class=na>andExpect</span><span class=o>(</span><span class=n>content</span><span class=o>().</span><span class=na>string</span><span class=o>(</span><span class=n>equalTo</span><span class=o>(</span><span class=s>&#34;{\&#34;id\&#34;:1,\&#34;name\&#34;:\&#34;测试终极大师\&#34;,\&#34;age\&#34;:30}&#34;</span><span class=o>)));</span>
-
-        <span class=c1>// 6、del删除id为1的user
-</span><span class=c1></span>        <span class=n>request</span> <span class=o>=</span> <span class=n>delete</span><span class=o>(</span><span class=s>&#34;/users/1&#34;</span><span class=o>);</span>
-        <span class=n>mvc</span><span class=o>.</span><span class=na>perform</span><span class=o>(</span><span class=n>request</span><span class=o>)</span>
-                <span class=o>.</span><span class=na>andExpect</span><span class=o>(</span><span class=n>content</span><span class=o>().</span><span class=na>string</span><span class=o>(</span><span class=n>equalTo</span><span class=o>(</span><span class=s>&#34;success&#34;</span><span class=o>)));</span>
-
-        <span class=c1>// 7、get查一下user列表，应该为空
-</span><span class=c1></span>        <span class=n>request</span> <span class=o>=</span> <span class=n>get</span><span class=o>(</span><span class=s>&#34;/users/&#34;</span><span class=o>);</span>
-        <span class=n>mvc</span><span class=o>.</span><span class=na>perform</span><span class=o>(</span><span class=n>request</span><span class=o>)</span>
-                <span class=o>.</span><span class=na>andExpect</span><span class=o>(</span><span class=n>status</span><span class=o>().</span><span class=na>isOk</span><span class=o>())</span>
-                <span class=o>.</span><span class=na>andExpect</span><span class=o>(</span><span class=n>content</span><span class=o>().</span><span class=na>string</span><span class=o>(</span><span class=n>equalTo</span><span class=o>(</span><span class=s>&#34;[]&#34;</span><span class=o>)));</span>
-
-    <span class=o>}</span>
-
-<span class=o>}</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>必须引入下面这些静态函数的引用：</p>
-<div class=highlight><div class=chroma>
-<table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt>1
-</span><span class=lnt>2
-</span><span class=lnt>3
-</span><span class=lnt>4
-</span></code></pre></td>
-<td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=kn>import static</span> <span class=nn>org.hamcrest.Matchers.equalTo</span><span class=o>;</span>
-<span class=kn>import static</span> <span class=nn>org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*</span><span class=o>;</span>
-<span class=kn>import static</span> <span class=nn>org.springframework.test.web.servlet.result.MockMvcResultMatchers.content</span><span class=o>;</span>
-<span class=kn>import static</span> <span class=nn>org.springframework.test.web.servlet.result.MockMvcResultMatchers.status</span><span class=o>;</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>测试类采用<code>@RunWith(SpringRunner.class)</code>和<code>@SpringBootTest</code>修饰启动；另外，由于POST和PUT接口的参数采用<code>@RequestBody</code>注解，所以提交的会是一个json字符串，而不是之前的参数形式，这里在定义请求的时候使用<code>contentType(MediaType.APPLICATION_JSON)</code>指定提交内容为json格式，使用<code>content</code>传入要提交的json字符串。</p>
-</div>
-<div class=post-copyright>
-<p class=copyright-item>
-<span class=item-title>文章作者</span>
-<span class=item-content>Dabu6aiksg</span>
-</p>
-<p class=copyright-item>
-<span class=item-title>上次更新</span>
-<span class=item-content>
-2021-11-23
-<a href=https://github.com/wxjer/wxjer.github.io/commit/d8169854e46b55026ca90b343928ba2271e293e9 title="reset tag & categories">(d816985)</a>
-</span>
-</p>
-</div>
-<footer class=post-footer>
-<div class=post-tags>
-<a href=/tags/springboot/>SpringBoot</a>
-</div>
-<nav class=post-nav>
-<a class=prev href=/post/algo_%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/>
-<i class="iconfont icon-left"></i>
-<span class="prev-text nav-default">学习时间复杂度_排序算法_递归</span>
-<span class="prev-text nav-mobile">上一篇</span>
-</a>
-<a class=next href=/post/springboot%E7%AC%94%E8%AE%B0%E4%B9%8Bproperties/>
-<span class="next-text nav-default">简明SpringBoot之properties</span>
-<span class="next-text nav-mobile">下一篇</span>
-<i class="iconfont icon-right"></i>
-</a>
-</nav>
-</footer>
-</article>
-</div>
-</div>
-</main>
-<footer id=footer class=footer>
-<div class=social-links>
-<a href=https://github.com/wxjer class="iconfont icon-github" title=github></a>
-<a href=http://wxjer.github.io/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a>
-</div>
-<div class=copyright>
-<a href=https://gohugo.io><img src=https://img.shields.io/badge/Blog-HUGO-%2330b188 title="blog by hugo"></a>
-<span class=division>|</span>
-<a href=https://github.com/olOwOlo/hugo-theme-even><img src=https://img.shields.io/badge/Theme-Even-%23c26c62 title="theme by Even"></a>
-<span class=division>|</span>
-<a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"><img src=https://img.shields.io/badge/CDN-%E5%8F%88%E6%8B%8D%E4%BA%91-%230c95fa title=本网站由又拍云提供CDN加速和云存储服务></a>
-<div class=busuanzi-footer>
-<span id=busuanzi_container_site_pv> 本站总访问量 <span id=busuanzi_value_site_pv><img src=/img/spinner.svg alt=spinner.svg></span> 次 </span>
-<span class=division>|</span>
-<span id=busuanzi_container_site_uv> 认证互联网大佬访问量 <span id=busuanzi_value_site_uv><img src=/img/spinner.svg alt=spinner.svg></span> 人 </span>
-</div>
-<span class=copyright-year>
-&copy;
-2021 -
-2022<span class=heart><i class="iconfont icon-heart"></i></span><span>SIRIUS</span>
-</span>
-</div>
-</footer>
-<div class=back-to-top id=back-to-top>
-<i class="iconfont icon-up"></i>
-</div>
-</div>
-<script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script>
-<script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script>
-<script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script>
-<script src=https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin=anonymous></script>
-<script src=https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin=anonymous></script>
-<script>var languageCode="en".replace(/-/g,'_').replace(/_(.*)/,function(b,a){return b.replace(a,a.toUpperCase())});timeago().render(document.querySelectorAll('.timeago'),languageCode),timeago.cancel()</script>
-<script type=text/javascript src=/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js></script>
-<script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga('create','UA-114666602-1','auto'),ga('set','anonymizeIp',!0),ga('send','pageview'))</script>
-<script async src=https://www.google-analytics.com/analytics.js></script>
-<script id=baidu_analytics>var _hmt=_hmt||[];(function(){var a,b;if(window.location.hostname==='localhost')return;a=document.createElement("script"),a.async=!0,a.src="https://hm.baidu.com/hm.js?7882456b4f4761e1fa7dec9f128b93e3",b=document.getElementsByTagName("script")[0],b.parentNode.insertBefore(a,b)})()</script>
-</body>
-</html>
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=generator content="Hugo 0.97.3"><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=author content="Sirius"><meta property="og:url" content="https://4bug.cn/post/restful_api/"><link rel=canonical href=https://4bug.cn/post/restful_api/><link rel=alternate type=application/atom+xml href=https://4bug.cnindex.xml title=SIRIUS><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/4bug.cn"},"articleSection":"post","name":"简明SpringBoot小RESTful API","headline":"简明SpringBoot小RESTful API","description":"学点Springboot","inLanguage":"en-US","author":"Sirius","creator":"Sirius","publisher":"Sirius","accountablePerson":"Sirius","copyrightHolder":"Sirius","copyrightYear":"2021","datePublished":"2021-11-17 23:47:01 \u002b0800 \u002b0800","dateModified":"2021-11-17 23:47:01 \u002b0800 \u002b0800","url":"https:\/\/4bug.cn\/post\/restful_api\/","keywords":["SpringBoot"]}</script><title>简明SpringBoot小RESTful API</title><meta property="og:title" content="简明SpringBoot小RESTful API"><meta property="og:type" content="article"><meta property="og:description" content="学点Springboot"><meta name=description content="学点Springboot"><meta property="og:locale" content="en-us"><style>body{font-family:bree serif,sans-serif;-webkit-font-smoothing:antialiased;margin:0 20px}article{max-width:1000px;margin-left:auto;margin-right:auto}a{color:#000;text-decoration:none}a:hover{font-weight:600;text-decoration:underline}.post-ads{margin:50px 0}.markdown-body{font-size:18px;max-width:100%}.markdown-body a{text-decoration:underline;text-decoration-color:#000}.markdown-body blockquote{margin:0;padding:0 1em;color:#57606a;border-left:.25em solid #d0d7de}.markdown-body pre{padding:16px;overflow:auto;border-radius:10px}.markdown-body code{padding:.2em .4em;font-size:85%;background-color:#f6f8fa;border-radius:6px}.markdown-body pre>code{padding:0;font-size:85%;background-color:inherit;border:0}.Chinese .markdown-body{line-height:200%}.site-date-catalog{font-size:2rem}.header-title{font-size:2rem;font-weight:700;margin-top:32px;font-family:bungee shade,sans-serif}.header-title a{text-decoration:none}.header-subtitle{color:#666}.header-items{margin:10px 0}.header-item{margin:0 5px}.header-line{width:100%;border-width:2px;border-color:#482936;border-style:solid none none none}.lang-switch{font-weight:600}#posts-list{min-height:600px}.posts-line{font-size:1.2rem;margin:12px 0}.posts-categories{display:flex;flex-direction:row-reverse;font-size:.8rem;margin:auto;text-align:center}.posts-category{padding:3px 0;width:70%;border:#000 2px solid;border-radius:5px}.site-footer{margin-bottom:30px;display:flex;justify-content:center;flex-wrap:wrap;padding:0;border-width:3px;border-style:solid none;border-color:#fff}.site-footer-item{margin-right:12px}.post-content img{max-width:100%;display:block;margin-right:auto;margin-top:12px}.post-header{margin-bottom:50px}.post-title{font-size:2rem;font-weight:600}.post-tags{display:inline;font-weight:600;padding:2px 5px;margin-right:6px;border:#000 2px solid;border-radius:5px}.post-date{font-weight:800;font-style:italic}.post-author{float:right;font-weight:600}.page-content{min-height:60%}.post-content{margin-bottom:50px}.post-content p{hyphens:auto;line-height:1.8;text-justify:ideographic;margin-bottom:1em}.related-content{border-width:3px;border-style:solid;border-color:#000;padding:0 10px;margin-bottom:30px;margin-top:30px}.related-content li{margin:5px 0}.taxonomy-term{font-size:3rem}.gallery-img{text-align:center}.gallery-img span{text-align:center}.gallery-img-desc{font-size:.8em;font-weight:800}#disqus_thread{position:relative}#disqus_thread:after{content:"";display:block;height:55px;width:100%;position:absolute;bottom:0;background:#fff}@media screen and (max-width:600px){.header-title,.header-subtitle,.header-items{text-align:center}.posts-line{font-size:16px}.markdown-body{font-size:16px}.post-title{font-size:2rem}.post-content p{letter-spacing:.05em}}@media screen and (max-width:48em){.posts-category{display:none}}</style><style>.container,.container-fluid{margin-right:auto;margin-left:auto}.container-fluid{padding-right:2rem;padding-left:2rem}.row{box-sizing:border-box;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-flex:0;-ms-flex:0 1 auto;flex:initial;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-ms-flex-wrap:wrap;flex-wrap:wrap;margin-right:-.5rem;margin-left:-.5rem}.row.reverse{-webkit-box-orient:horizontal;-webkit-box-direction:reverse;-ms-flex-direction:row-reverse;flex-direction:row-reverse}.col.reverse{-webkit-box-orient:vertical;-webkit-box-direction:reverse;-ms-flex-direction:column-reverse;flex-direction:column-reverse}.col-xs,.col-xs-1,.col-xs-10,.col-xs-11,.col-xs-12,.col-xs-2,.col-xs-3,.col-xs-4,.col-xs-5,.col-xs-6,.col-xs-7,.col-xs-8,.col-xs-9,.col-xs-offset-0,.col-xs-offset-1,.col-xs-offset-10,.col-xs-offset-11,.col-xs-offset-12,.col-xs-offset-2,.col-xs-offset-3,.col-xs-offset-4,.col-xs-offset-5,.col-xs-offset-6,.col-xs-offset-7,.col-xs-offset-8,.col-xs-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-xs{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-xs-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-xs-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-xs-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-xs-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-xs-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-xs-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-xs-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-xs-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-xs-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-xs-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-xs-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-xs-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-xs-offset-0{margin-left:0}.col-xs-offset-1{margin-left:8.33333333%}.col-xs-offset-2{margin-left:16.66666667%}.col-xs-offset-3{margin-left:25%}.col-xs-offset-4{margin-left:33.33333333%}.col-xs-offset-5{margin-left:41.66666667%}.col-xs-offset-6{margin-left:50%}.col-xs-offset-7{margin-left:58.33333333%}.col-xs-offset-8{margin-left:66.66666667%}.col-xs-offset-9{margin-left:75%}.col-xs-offset-10{margin-left:83.33333333%}.col-xs-offset-11{margin-left:91.66666667%}.start-xs{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-xs{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-xs{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-xs{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-xs{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-xs{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-xs{-ms-flex-pack:distribute;justify-content:space-around}.between-xs{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-xs{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-xs{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}@media only screen and (min-width:48em){.container{width:49rem}.col-sm,.col-sm-1,.col-sm-10,.col-sm-11,.col-sm-12,.col-sm-2,.col-sm-3,.col-sm-4,.col-sm-5,.col-sm-6,.col-sm-7,.col-sm-8,.col-sm-9,.col-sm-offset-0,.col-sm-offset-1,.col-sm-offset-10,.col-sm-offset-11,.col-sm-offset-12,.col-sm-offset-2,.col-sm-offset-3,.col-sm-offset-4,.col-sm-offset-5,.col-sm-offset-6,.col-sm-offset-7,.col-sm-offset-8,.col-sm-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-sm{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-sm-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-sm-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-sm-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-sm-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-sm-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-sm-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-sm-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-sm-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-sm-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-sm-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-sm-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-sm-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-sm-offset-0{margin-left:0}.col-sm-offset-1{margin-left:8.33333333%}.col-sm-offset-2{margin-left:16.66666667%}.col-sm-offset-3{margin-left:25%}.col-sm-offset-4{margin-left:33.33333333%}.col-sm-offset-5{margin-left:41.66666667%}.col-sm-offset-6{margin-left:50%}.col-sm-offset-7{margin-left:58.33333333%}.col-sm-offset-8{margin-left:66.66666667%}.col-sm-offset-9{margin-left:75%}.col-sm-offset-10{margin-left:83.33333333%}.col-sm-offset-11{margin-left:91.66666667%}.start-sm{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-sm{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-sm{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-sm{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-sm{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-sm{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-sm{-ms-flex-pack:distribute;justify-content:space-around}.between-sm{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-sm{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-sm{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}}@media only screen and (min-width:64em){.container{width:65rem}.col-md,.col-md-1,.col-md-10,.col-md-11,.col-md-12,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,.col-md-7,.col-md-8,.col-md-9,.col-md-offset-0,.col-md-offset-1,.col-md-offset-10,.col-md-offset-11,.col-md-offset-12,.col-md-offset-2,.col-md-offset-3,.col-md-offset-4,.col-md-offset-5,.col-md-offset-6,.col-md-offset-7,.col-md-offset-8,.col-md-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-md{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-md-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-md-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-md-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-md-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-md-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-md-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-md-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-md-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-md-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-md-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-md-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-md-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-md-offset-0{margin-left:0}.col-md-offset-1{margin-left:8.33333333%}.col-md-offset-2{margin-left:16.66666667%}.col-md-offset-3{margin-left:25%}.col-md-offset-4{margin-left:33.33333333%}.col-md-offset-5{margin-left:41.66666667%}.col-md-offset-6{margin-left:50%}.col-md-offset-7{margin-left:58.33333333%}.col-md-offset-8{margin-left:66.66666667%}.col-md-offset-9{margin-left:75%}.col-md-offset-10{margin-left:83.33333333%}.col-md-offset-11{margin-left:91.66666667%}.start-md{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-md{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-md{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-md{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-md{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-md{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-md{-ms-flex-pack:distribute;justify-content:space-around}.between-md{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-md{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-md{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}}@media only screen and (min-width:75em){.container{width:76rem}.col-lg,.col-lg-1,.col-lg-10,.col-lg-11,.col-lg-12,.col-lg-2,.col-lg-3,.col-lg-4,.col-lg-5,.col-lg-6,.col-lg-7,.col-lg-8,.col-lg-9,.col-lg-offset-0,.col-lg-offset-1,.col-lg-offset-10,.col-lg-offset-11,.col-lg-offset-12,.col-lg-offset-2,.col-lg-offset-3,.col-lg-offset-4,.col-lg-offset-5,.col-lg-offset-6,.col-lg-offset-7,.col-lg-offset-8,.col-lg-offset-9{box-sizing:border-box;-webkit-box-flex:0;-ms-flex:0 0 auto;flex:none;padding-right:.5rem;padding-left:.5rem}.col-lg{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;-ms-flex-preferred-size:0;flex-basis:0;max-width:100%}.col-lg-1{-ms-flex-preferred-size:8.33333333%;flex-basis:8.33333333%;max-width:8.33333333%}.col-lg-2{-ms-flex-preferred-size:16.66666667%;flex-basis:16.66666667%;max-width:16.66666667%}.col-lg-3{-ms-flex-preferred-size:25%;flex-basis:25%;max-width:25%}.col-lg-4{-ms-flex-preferred-size:33.33333333%;flex-basis:33.33333333%;max-width:33.33333333%}.col-lg-5{-ms-flex-preferred-size:41.66666667%;flex-basis:41.66666667%;max-width:41.66666667%}.col-lg-6{-ms-flex-preferred-size:50%;flex-basis:50%;max-width:50%}.col-lg-7{-ms-flex-preferred-size:58.33333333%;flex-basis:58.33333333%;max-width:58.33333333%}.col-lg-8{-ms-flex-preferred-size:66.66666667%;flex-basis:66.66666667%;max-width:66.66666667%}.col-lg-9{-ms-flex-preferred-size:75%;flex-basis:75%;max-width:75%}.col-lg-10{-ms-flex-preferred-size:83.33333333%;flex-basis:83.33333333%;max-width:83.33333333%}.col-lg-11{-ms-flex-preferred-size:91.66666667%;flex-basis:91.66666667%;max-width:91.66666667%}.col-lg-12{-ms-flex-preferred-size:100%;flex-basis:100%;max-width:100%}.col-lg-offset-0{margin-left:0}.col-lg-offset-1{margin-left:8.33333333%}.col-lg-offset-2{margin-left:16.66666667%}.col-lg-offset-3{margin-left:25%}.col-lg-offset-4{margin-left:33.33333333%}.col-lg-offset-5{margin-left:41.66666667%}.col-lg-offset-6{margin-left:50%}.col-lg-offset-7{margin-left:58.33333333%}.col-lg-offset-8{margin-left:66.66666667%}.col-lg-offset-9{margin-left:75%}.col-lg-offset-10{margin-left:83.33333333%}.col-lg-offset-11{margin-left:91.66666667%}.start-lg{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;text-align:start}.center-lg{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}.end-lg{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;text-align:end}.top-lg{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.middle-lg{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.bottom-lg{-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.around-lg{-ms-flex-pack:distribute;justify-content:space-around}.between-lg{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.first-lg{-webkit-box-ordinal-group:0;-ms-flex-order:-1;order:-1}.last-lg{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}}</style><link href=/index.xml rel=alternate type=application/rss+xml title=SIRIUS><link rel=preconnect href=https://fonts.gstatic.com><link href="https://fonts.googleapis.com/css?family=Bree+Serif|Bungee+Shade" rel=stylesheet><script async src="https://www.googletagmanager.com/gtag/js?id=UA-114666602-1"></script></head><body><article class=post id=article><div class=row><div class=col-xs-12><div class=site-header><header><div class=header-title><a href=/>Sirius</a></div><div class=header-subtitle>something meaningless</div></header><div class="row end-md center-xs header-items"><div class=header-item><a href=/about>About</a></div></div><div class="row end-xs"></div><div class=header-line></div></div><header class=post-header><h1 class=post-title>简明SpringBoot小RESTful API</h1><div class="row post-desc"><div class=col-xs-6><time class=post-date datetime="2021-11-17 23:47:01 +0800">17 Nov 2021</time></div><div class=col-xs-6><div class=post-author><a target=_blank href=https://4bug.cn>@Sirius</a></div></div></div></header><div class="post-content markdown-body"><p>SpringBoot之RESTful API -&lt;<a href=https://blog.didispace.com/spring-boot-learning-2x/>翟永超的Springboot的入门教程</a>></p><h4 id=api设计如下>API设计如下：</h4><table><thead><tr><th><strong>请求类型</strong></th><th><strong>URL</strong></th><th><strong>功能说明</strong></th></tr></thead><tbody><tr><td>GET</td><td>/users</td><td>查询用户列表</td></tr><tr><td>POST</td><td>/users</td><td>创建一个用户</td></tr><tr><td>GET</td><td>/users/id</td><td>根据id查询一个用户</td></tr><tr><td>PUT</td><td>/users/id</td><td>根据ID更新一个用户</td></tr><tr><td>DELETE</td><td>/users/id</td><td>根据ID删除一个用户</td></tr></tbody></table><h3 id=定义user实体>定义User实体</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#a6e22e>@Data</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>User</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>private</span> Long id<span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>private</span> String name<span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>private</span> Integer age<span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span></code></pre></div><h3 id=实现对user对象的操作接口>实现对User对象的操作接口</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#a6e22e>@RestController</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>@RequestMapping</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;/users&#34;</span><span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>UserController</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>static</span> Map<span style=color:#f92672>&lt;</span>Long<span style=color:#f92672>,</span> User<span style=color:#f92672>&gt;</span> users <span style=color:#f92672>=</span> Collections<span style=color:#f92672>.</span><span style=color:#a6e22e>synchronizedMap</span><span style=color:#f92672>(</span><span style=color:#66d9ef>new</span> HashMap<span style=color:#f92672>&lt;&gt;());</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@GetMapping</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;/&#34;</span><span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> List<span style=color:#f92672>&lt;</span>User<span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>getUserList</span><span style=color:#f92672>(){</span>
+</span></span><span style=display:flex><span>        List<span style=color:#f92672>&lt;</span>User<span style=color:#f92672>&gt;</span> r <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> ArrayList<span style=color:#f92672>&lt;&gt;(</span>users<span style=color:#f92672>.</span><span style=color:#a6e22e>values</span><span style=color:#f92672>());</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> r<span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@PostMapping</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;/&#34;</span><span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> String <span style=color:#a6e22e>postUser</span><span style=color:#f92672>(</span><span style=color:#a6e22e>@RequestBody</span> User user<span style=color:#f92672>){</span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>//@RequestBody注解用来绑定通过http请求中application/json类型上传的数据
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        users<span style=color:#f92672>.</span><span style=color:#a6e22e>put</span><span style=color:#f92672>(</span>user<span style=color:#f92672>.</span><span style=color:#a6e22e>getId</span><span style=color:#f92672>(),</span>user<span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> <span style=color:#e6db74>&#34;success&#34;</span><span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@GetMapping</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;/{id}&#34;</span><span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> User <span style=color:#a6e22e>getUser</span><span style=color:#f92672>(</span><span style=color:#a6e22e>@PathVariable</span> Long id<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// url中的id可通过@PathVariable绑定到函数的参数中
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        <span style=color:#66d9ef>return</span> users<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span>id<span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@PutMapping</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;/{id}&#34;</span><span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> String <span style=color:#a6e22e>putUser</span><span style=color:#f92672>(</span><span style=color:#a6e22e>@PathVariable</span> Long id<span style=color:#f92672>,</span> <span style=color:#a6e22e>@RequestBody</span> User user<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>        User u <span style=color:#f92672>=</span> users<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span>id<span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>        u<span style=color:#f92672>.</span><span style=color:#a6e22e>setName</span><span style=color:#f92672>(</span>user<span style=color:#f92672>.</span><span style=color:#a6e22e>getName</span><span style=color:#f92672>());</span>
+</span></span><span style=display:flex><span>        u<span style=color:#f92672>.</span><span style=color:#a6e22e>setAge</span><span style=color:#f92672>(</span>user<span style=color:#f92672>.</span><span style=color:#a6e22e>getAge</span><span style=color:#f92672>());</span>
+</span></span><span style=display:flex><span>        users<span style=color:#f92672>.</span><span style=color:#a6e22e>put</span><span style=color:#f92672>(</span>id<span style=color:#f92672>,</span> u<span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> <span style=color:#e6db74>&#34;success&#34;</span><span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@DeleteMapping</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;/{id}&#34;</span><span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> String <span style=color:#a6e22e>deleteUser</span><span style=color:#f92672>(</span><span style=color:#a6e22e>@PathVariable</span> Long id<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>        users<span style=color:#f92672>.</span><span style=color:#a6e22e>remove</span><span style=color:#f92672>(</span>id<span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> <span style=color:#e6db74>&#34;success&#34;</span><span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span></code></pre></div><h3 id=单元测试>单元测试</h3><p>大佬竟然还提供带注释的单元测试 爱了</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#a6e22e>@RunWith</span><span style=color:#f92672>(</span>SpringRunner<span style=color:#f92672>.</span><span style=color:#a6e22e>class</span><span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>@SpringBootTest</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Chapter21ApplicationTests</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>private</span> MockMvc mvc<span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@Before</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>setUp</span><span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>        mvc <span style=color:#f92672>=</span> MockMvcBuilders<span style=color:#f92672>.</span><span style=color:#a6e22e>standaloneSetup</span><span style=color:#f92672>(</span><span style=color:#66d9ef>new</span> UserController<span style=color:#f92672>()).</span><span style=color:#a6e22e>build</span><span style=color:#f92672>();</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>@Test</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>testUserController</span><span style=color:#f92672>()</span> <span style=color:#66d9ef>throws</span> Exception <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// 测试UserController
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        RequestBuilder request<span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// 1、get查一下user列表，应该为空
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        request <span style=color:#f92672>=</span> get<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;/users/&#34;</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>        mvc<span style=color:#f92672>.</span><span style=color:#a6e22e>perform</span><span style=color:#f92672>(</span>request<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>                <span style=color:#f92672>.</span><span style=color:#a6e22e>andExpect</span><span style=color:#f92672>(</span>status<span style=color:#f92672>().</span><span style=color:#a6e22e>isOk</span><span style=color:#f92672>())</span>
+</span></span><span style=display:flex><span>                <span style=color:#f92672>.</span><span style=color:#a6e22e>andExpect</span><span style=color:#f92672>(</span>content<span style=color:#f92672>().</span><span style=color:#a6e22e>string</span><span style=color:#f92672>(</span>equalTo<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;[]&#34;</span><span style=color:#f92672>)));</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// 2、post提交一个user
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        request <span style=color:#f92672>=</span> post<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;/users/&#34;</span><span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>                <span style=color:#f92672>.</span><span style=color:#a6e22e>contentType</span><span style=color:#f92672>(</span>MediaType<span style=color:#f92672>.</span><span style=color:#a6e22e>APPLICATION_JSON</span><span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>                <span style=color:#f92672>.</span><span style=color:#a6e22e>content</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;{\&#34;id\&#34;:1,\&#34;name\&#34;:\&#34;测试大师\&#34;,\&#34;age\&#34;:20}&#34;</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>        mvc<span style=color:#f92672>.</span><span style=color:#a6e22e>perform</span><span style=color:#f92672>(</span>request<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>                <span style=color:#f92672>.</span><span style=color:#a6e22e>andExpect</span><span style=color:#f92672>(</span>content<span style=color:#f92672>().</span><span style=color:#a6e22e>string</span><span style=color:#f92672>(</span>equalTo<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;success&#34;</span><span style=color:#f92672>)));</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// 3、get获取user列表，应该有刚才插入的数据
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        request <span style=color:#f92672>=</span> get<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;/users/&#34;</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>        mvc<span style=color:#f92672>.</span><span style=color:#a6e22e>perform</span><span style=color:#f92672>(</span>request<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>                <span style=color:#f92672>.</span><span style=color:#a6e22e>andExpect</span><span style=color:#f92672>(</span>status<span style=color:#f92672>().</span><span style=color:#a6e22e>isOk</span><span style=color:#f92672>())</span>
+</span></span><span style=display:flex><span>                <span style=color:#f92672>.</span><span style=color:#a6e22e>andExpect</span><span style=color:#f92672>(</span>content<span style=color:#f92672>().</span><span style=color:#a6e22e>string</span><span style=color:#f92672>(</span>equalTo<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;[{\&#34;id\&#34;:1,\&#34;name\&#34;:\&#34;测试大师\&#34;,\&#34;age\&#34;:20}]&#34;</span><span style=color:#f92672>)));</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// 4、put修改id为1的user
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        request <span style=color:#f92672>=</span> put<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;/users/1&#34;</span><span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>                <span style=color:#f92672>.</span><span style=color:#a6e22e>contentType</span><span style=color:#f92672>(</span>MediaType<span style=color:#f92672>.</span><span style=color:#a6e22e>APPLICATION_JSON</span><span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>                <span style=color:#f92672>.</span><span style=color:#a6e22e>content</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;{\&#34;name\&#34;:\&#34;测试终极大师\&#34;,\&#34;age\&#34;:30}&#34;</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>        mvc<span style=color:#f92672>.</span><span style=color:#a6e22e>perform</span><span style=color:#f92672>(</span>request<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>                <span style=color:#f92672>.</span><span style=color:#a6e22e>andExpect</span><span style=color:#f92672>(</span>content<span style=color:#f92672>().</span><span style=color:#a6e22e>string</span><span style=color:#f92672>(</span>equalTo<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;success&#34;</span><span style=color:#f92672>)));</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// 5、get一个id为1的user
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        request <span style=color:#f92672>=</span> get<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;/users/1&#34;</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>        mvc<span style=color:#f92672>.</span><span style=color:#a6e22e>perform</span><span style=color:#f92672>(</span>request<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>                <span style=color:#f92672>.</span><span style=color:#a6e22e>andExpect</span><span style=color:#f92672>(</span>content<span style=color:#f92672>().</span><span style=color:#a6e22e>string</span><span style=color:#f92672>(</span>equalTo<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;{\&#34;id\&#34;:1,\&#34;name\&#34;:\&#34;测试终极大师\&#34;,\&#34;age\&#34;:30}&#34;</span><span style=color:#f92672>)));</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// 6、del删除id为1的user
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        request <span style=color:#f92672>=</span> delete<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;/users/1&#34;</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>        mvc<span style=color:#f92672>.</span><span style=color:#a6e22e>perform</span><span style=color:#f92672>(</span>request<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>                <span style=color:#f92672>.</span><span style=color:#a6e22e>andExpect</span><span style=color:#f92672>(</span>content<span style=color:#f92672>().</span><span style=color:#a6e22e>string</span><span style=color:#f92672>(</span>equalTo<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;success&#34;</span><span style=color:#f92672>)));</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// 7、get查一下user列表，应该为空
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        request <span style=color:#f92672>=</span> get<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;/users/&#34;</span><span style=color:#f92672>);</span>
+</span></span><span style=display:flex><span>        mvc<span style=color:#f92672>.</span><span style=color:#a6e22e>perform</span><span style=color:#f92672>(</span>request<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>                <span style=color:#f92672>.</span><span style=color:#a6e22e>andExpect</span><span style=color:#f92672>(</span>status<span style=color:#f92672>().</span><span style=color:#a6e22e>isOk</span><span style=color:#f92672>())</span>
+</span></span><span style=display:flex><span>                <span style=color:#f92672>.</span><span style=color:#a6e22e>andExpect</span><span style=color:#f92672>(</span>content<span style=color:#f92672>().</span><span style=color:#a6e22e>string</span><span style=color:#f92672>(</span>equalTo<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;[]&#34;</span><span style=color:#f92672>)));</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span></code></pre></div><p>必须引入下面这些静态函数的引用：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#f92672>import static</span> org.hamcrest.Matchers.equalTo<span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>import static</span> org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*<span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>import static</span> org.springframework.test.web.servlet.result.MockMvcResultMatchers.content<span style=color:#f92672>;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>import static</span> org.springframework.test.web.servlet.result.MockMvcResultMatchers.status<span style=color:#f92672>;</span>
+</span></span></code></pre></div><p>测试类采用<code>@RunWith(SpringRunner.class)</code>和<code>@SpringBootTest</code>修饰启动；另外，由于POST和PUT接口的参数采用<code>@RequestBody</code>注解，所以提交的会是一个json字符串，而不是之前的参数形式，这里在定义请求的时候使用<code>contentType(MediaType.APPLICATION_JSON)</code>指定提交内容为json格式，使用<code>content</code>传入要提交的json字符串。</p></div><div class="row middle-xs"><div class=col-xs-12><div class=post-tags><a href=/tags/springboot/>SpringBoot</a></div></div></div><div class=row><div class=col-xs-12></div></div><div class=related-content><h3>Related Posts</h3><ul><li><a href=/post/springboot%E7%AC%94%E8%AE%B0%E4%B9%8Bproperties/>简明SpringBoot之properties</a></li><li><a href=/post/springboot%E7%AC%94%E8%AE%B0%E4%B9%8B%E6%B3%A8%E8%A7%A3/>简明SpringBoot小注解</a></li></ul></div><div style=height:0></div><div class=site-footer><div class=site-footer-item><a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"><img src="https://img.shields.io/badge/CDN-%E5%8F%88%E6%8B%8D%E4%BA%91-000000?style=flat-square" title=本网站由又拍云提供CDN加速和云存储服务></a></div><div class=site-footer-item><a href=https://gohugo.io><img src="https://img.shields.io/badge/Blog-HUGO-%23000000?style=flat-square" title="blog by hugo"></a></div><div class=site-footer-item><a href=https://github.com/joway/hugo-theme-yinyang><img src="https://img.shields.io/badge/Theme-Yingyang-%23000000?style=flat-square" title="theme by yinyang"></a></div><div class=site-footer-item><a href=https://creativecommons.org/licenses/by-nc-sa/4.0/><img src="https://img.shields.io/badge/CC-BY--NC--SA%204.0-%23000?style=flat-square" title="Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)"></a></div></div></div></div></article><script></script></body></html>
